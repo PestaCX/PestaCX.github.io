@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head> <!-- A head-ben elhelyezett dolgok nem látszanak a weblapon!-->
+    <meta charset="UTF-8"> <!-- meta elemnek nincs lezáró tag-je, mert nincs tartalma!-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- ez vmi "régiböngészős" dolog... -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ez a mobilos megjelenítést segíti. -->
+    <title>HTML-structure</title>
+    <link rel="stylesheet" href="styling.css">
+</head>
+
+
+
+<body> <!-- Ez már látszik a weboldalon, tkp. ez adja a tartalmat -->
+
+    <table style="position: fixed; background-color: aliceblue;">
+        <thead>
+            <tr>
+                <td><a class="nav_menu" href="index.html">Főoldal</a></td>
+                <td><a class="nav_menu"href="HTML_ELEMEI.html">HTML</a></td>
+                <td><a class="nav_menu"href="CSS_Tutor.html">CSS</a></td>
+                <td><a class="nav_menu"href="about.html">about</a></td>
+            </tr>
+        </thead>
+    </table>
+
+    <h1> A html-kód felépítése</h1>
+
+    <p>
+    A html-kód írja le a weboldalon megjelenítendő elemeket.
+    A html-kód alapvetően két fontos blokkból áll: a <strong>&lt;head&gt;</strong>-ből és a <strong>&lt;body&gt;</strong>-ból.
+    </p>
+
+    <p>
+    A <strong>&lt;head&gt;</strong>-ben alapbeállításokat adunk meg, míg a <strong>&lt;body&gt;</strong>-ban azokat az elemeket határozzuk meg, amelyek a weboldalon ténylegesen meg is jelennek.
+    (A <strong>&lt;head&gt;</strong> elemei NEM láthatóak a weboldalon!)
+    </p>
+
+    <br>
+
+    <h2 class="h2_border">  Egy weboldal &lt;head&gt; - elemei </h2>
+    
+    <div class="code_snippet">
+        &lt;meta charset="UTF-8"&gt;
+    </div>
+    
+    Ezzel beállítottuk, hogy milyen karakterkészletet használjon.
+    Célszerű az UTF-et használni, mert abban gyakorlatilag mindenféle karaktertípus helyesen fog megjelenni.
+    <br> <br>
+
+    <div class="code_snippet">
+     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    </div>
+    Ez a sor teszi lehetővé, hogy a tartalom különféle eszközökön is használhatóan jelenjen meg.
+    
+    <p>
+    Figyeljük meg, hogy a meta tag-nek nincs záró tag-je!
+    Ez valószínűleg azért van így, mert nem tartalmat definiál.
+    </p>
+
+    
+    
+    <div class="code_snippet">
+    &lt;title&gt;lap címe&lt;/title&gt;
+    </div>
+    Ez az a cím, ami a böngészőablak tetején jelenik meg.
+    Ugyanez a cím lesz alapértelmezettként felajánlva akkor is, amikor az adott oldalt pl. kedvencként elmentjük.
+    
+    <p></p>
+    <br>
+    
+    <h2 class="h2_border"> Egy weboldal &lt;body&gt; - elemei </h2>
+        
+        <p class="gfg"> &lt;h1&gt; - &lt;h6&gt;: h, mint Header: </p> <br> <br>
+        <h1 class="gfg2"> &lt;h1&gt; azaz Címsor. &lt;/h1&gt;</h1>
+        <h2> &lt;h2&gt; <span style="color:blue";>Minél kisebb </span>&lt;/h2&gt;</h2>
+        <h3> &lt;h3&gt; <span style="color:blue";>a szám, </span>&lt;/h3&gt;</h3>
+        <h4> &lt;h4&gt; <span style="color:blue";>annál nagyobb </span>&lt;/h4&gt;</h4>
+        <h5> &lt;h5&gt; <span style="color:blue";>lesz a </span>&lt;/h5&gt;</h5>
+        <h6> &lt;h6&gt; <span style="color:blue";>betűméret. </span>&lt;/h6&gt;</h6>
+   
+    <br>
+
+    
+    <p><strong>&lt;p&gt;</strong> p, mint paragraph</p>
+        
+    <div class="code_snippet">
+    <p>
+    <strong>&lt;p&gt;</strong>This is a paragraph. Azaz ez egy bekezdés.<strong>&lt;/p&gt;</strong>
+    </p>
+    </div>
+       
+    A bekezdésekről alapvetően azt tudjuk, hogy mindig új sorban kezdődnek. Itt sincs másképp.
+    Láthatjuk, hogy előtte és utána is van "sorköz" (padding).
+
+    <p>
+        A <strong>&lt;p&gt;</strong> és a <strong>&lt;h1...h6&gt;</strong> elemeket 
+        új sorba, új bekezdésbe teszi még akkor is, ha rövidebbek a sornál. 
+        Ezeket hívjuk <em>blokk-elemeknek</em>.
+    </p>
+    
+    <p>
+        A <strong>&lt;body&gt;</strong> ... <strong>&lt;/body&gt;</strong> pl. egy bazi nagy blokk,
+        minden benne van, ami meg fog jelenni az oldalon.
+    </p>
+    
+    <p> 
+        Ez azt is jelenti, hogy ami a <strong>&lt;body&gt;</strong> blokkon kívül van, az nem fog látszani!
+    </p>
+    
+    <br>
+
+    <h2 class="h2_border"><strong>Blokk-szintű</strong> elemek vs. <strong>inline</strong>-elemek</h2>
+    Utóbbiak nem töltik ki a teljes sort.
+    <p><strong>Inline elemek</strong> csak akkor kerülnek új sorba, ha az előzőben már nincs számukra 
+    elegendő hely. 
+    De ha új sort kezdek a kódban, akkor sem fog új sorban megjelenni a weblapon.
+    Ez azért van, mert az oldal szélességét maga a monitoron látható szélesség szabja meg.
+    Ekkor a inline elemek úgy jelennek meg, hogy amíg el nem érik az oldal (jobb) szélét, 
+    addig nem váltanak sort.
+    Erről egyszerűen meggyőződhetünk azzal, hogy zoom-oljuk az oldalt, és láthatjuk, 
+    amint ez az egybefüggő szöveg a rendelkezésre álló hely függvényében tördelődik újra.
+    </p>
+
+    
+    <p>
+    Ezzel szemben a <strong>blokk-szintű elemek</strong> a teljes sort lefoglalják még akkor is, ha a bennük levő tartalom nem tenné ezt szükségessé.
+    Vagyis ha a blokk-elem tartalma mondjuk egyetlen szó, akkor is a teljes sort lefoglalja.
+    Ebből következik, hogy a rákövetkező elem - legyen az akár inline, akár blokk -, a következő sorba fog kerülni.
+    Ezt ellenőrizhetjük azt F12 megnyomása után megjelenő ablak " <em>Elements</em>" menüjében.
+    Itt (vagy akár a weboldalon, fent) kijelölünk egy blokk-elemet, és láthatjuk, hogy az adott elem mettől-meddig tart.
+    A blokk típusú elemek a képernyő bal szélétől a jobb széléig tartanak, függőleges irányban (szerencsére) nem.
+    </p>
+
+    <br>
+
+    <h2 class="h2_border">Listák</h2>
+    
+    <p>List item - <strong>&lt;li&gt;</strong></p>
+    A listaelemek a listák alkotóelemei. Az egyes listaelemeket az <strong>&lt;li&gt;</strong> tag-gel tudjuk megadni.
+
+    <p>Unordered list - <strong>&lt;ul&gt;</strong></p>
+    Unordered list-ben a listaelemek között semmilyen sorrendiséget nem jelzünk:
+    <ul>
+        <li> egyik elem</li>
+        <ul>
+            <li>egyik elem aleleme</li>
+            <li>egyik elem másik aleleme</li>
+
+        </ul>
+        <li> másik elem</li>
+        <li> ez is egy elem</li>
+    </ul>
+
+    <p>Ordered list - <strong>&lt;ol&gt;</strong></p>
+    Az ordered list nem azt jelenti, hogy a böngésző helyettünk sorba rendezne bármit is!
+    Csak azt jelenti, hogy az egyes listaelemek sorszámot kapnak:
+    <ol>
+        <li>egyik elem</li>
+        <li>másik elem</li>
+        <li>elem</li>
+    </ol>
+
+    <p>
+        Példa egy rendezetlen (unordered) lista megadására:
+    </p>
+
+    <div class="code_snippet">
+        <p>
+          <strong>&lt;ul&gt;</strong> <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<strong>&lt;li&gt;</strong> listaelem_1 <strong>&lt;/li&gt;</strong> <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<strong>&lt;li&gt;</strong> listaelem_2 <strong>&lt;/li&gt;</strong> <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<strong>&lt;li&gt;</strong> listaelem_. <strong>&lt;/li&gt;</strong> <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<strong>&lt;li&gt;</strong> listaelem_. <strong>&lt;/li&gt;</strong> <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<strong>&lt;li&gt;</strong> listaelem_x <strong>&lt;/li&gt;</strong> <br>
+          <strong>&lt;/ul&gt;</strong>
+        </p>
+    </div>
+    A rendezett lista megadása ugyanígy történik, csak az &lt;ol&gt;&lt;/ol&gt; tag-párost kell használni. <br>
+    <p>
+    A listák blokk-szintű elemek, vagyis mindig új sort kezdenek, és utánuk a következő elem is új sorba kerül.
+    </p>
+    
+    <br>
+
+    <h2 class="h2_border">Képek</h2>
+    
+    <div class="code_snippet">
+    <strong>&lt;img</strong> src="image-link" alt="ha nem jelenne meg,
+     ez a szöveg lesz ott" width="50" height="60">
+    </div>
+    Látható, hogy az <strong>&lt;img&gt;</strong> tag-nek sincs záró párja!
+    <p> Az <strong>&lt;img&gt;</strong> elem inline-elem, vagyis akár egy sor része is lehet:
+    
+     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/800px-HTML5_logo_and_wordmark.svg.png" alt="HTML5 logo" width="50" height="60">
+    </p>
+
+    <br>
+
+
+    <h2 class="h2_border" >Linkek</h2>
+    
+    <div class="code_snippet">
+    <strong>&lt;a href</strong>="http://www.cx-gl.hu"&gt;Nézd meg ezt a linket!<strong>&lt;/a&gt;</strong>
+    </div>
+
+    <p>
+        A linkek inline-szintű elemek, vagyis egyszerűen tudjuk használni folyó szövegben is.
+        <a href="http://www.cx-gl.hu">Nézd meg ezt a linket!</a>
+    </p>
+
+    <p>
+        A link jelezhető egy képpel is, 
+        ebben az esetben a "szöveg" helyére nem szöveget írunk, hanem az adott, megjelenítendő kép linkjét:
+    </p>
+    
+    <div class="code_snippet">
+    <strong>&lt;a href</strong>="http://www.cx-gl.hu"&gt;
+    <span style="color:red";>&lt;img src="kép_linkje"&gt;</span><strong>&lt;/a&gt;</strong>
+    </div>
+    
+    <p>
+    <a href="http://www.cx-gl.hu">
+        <img src="https://ogden_images.s3.amazonaws.com/www.motorcycleclassics.com/images/2009/03/11102152/CX650_2.jpg"
+         alt=CX650Turbo width="70" height="50"></a>
+    </p>
+    
+    <br>
+
+
+    <h2 class="h2_border">Elemek egymásba ágyazása</h2>
+    
+    <p>
+    Csak olyan elemBE lehet beágyazni további elemeket, amelynek van lezáró tag-je. Amelyiknek nincs, abba nem lehet beágyazni!
+    </p>
+    
+    <p>
+    Nem lehet tehát beágyazni az &lt;img&gt;, &lt;meta&gt; elemekbe sem!
+    </p>
+    
+    <p>
+    Nem működik a &lt;li&gt;&lt;/li&gt; listaelembe való további listaelem-beágyazás sem!
+    <br> &lt;li&gt; nem lehet &lt;li&gt;-nek a gyereke. &lt;ul&gt; vagy &lt;ol&gt; lehet szülő &lt;li&gt;-re nézve. <br>
+    Ha egy adott listaelem alá további al-listaelemket szeretnénk betenni, 
+    akkor azt az adott listaelem alatt kezdett új list-tel tudjuk megvalósítani. (Lásd fenn, a Listák címszó alatt.)
+    </p>
+    
+    <br>
+
+
+    <h2 class="h2_border">Táblázatok</h2>
+    A táblázatokat sok helyen tudjuk hasznosítani a weboldalon. <br>
+    A táblázat megadásának módja a következő: <br>
+    
+    <strong>&lt;table&gt;&lt;/table&gt;</strong> tag-ek jelölik a táblázat kezdetét és végét, lezárását. <br>
+    <strong>&lt;caption&gt;&lt;/caption&gt;</strong> tag-ek között adjuk meg a táblázat címét. <br>
+    <strong>&lt;thead&gt;&lt;/thead&gt;</strong> tag-ek jelölik a táblázat fejlécét (Table header). 
+    thead használata esetén a táblázat többi részét tbody-ba kell tenni! A thead párja a tfoot, ami nem kötelező. tfoot-nál is kell a tr, td!<br>
+    <strong>&lt;th&gt;&lt;/th&gt;</strong> tag-ek jelölik a táblázat fejlécében található adatok.
+    Ezeket érdekes módon tr-be kell tenni!<br>
+    <strong>&lt;tr&gt;&lt;/tr&gt;</strong> tag-ek jelölik a táblázat egyes sorait. <br>
+    <strong>&lt;td&gt;&lt;/td&gt;</strong> tag-ek között adjuk meg egy-egy cella tartalmát.
+    
+    <br>
+
+
+    <h3>Cellák összevonása egy táblázatban</h3>
+
+    <td rowspan="2"></td>
+    <td colspan="2"></td>
+
+    <table>
+        <tr>Table Row</tr>
+    </table>
+
+    <p style="color:blue";>MÉG MEG KELL NÉZNEM A GIT-EN VALÓ WEBOLDAL-PUBLIKÁLÁST!!!!</p>
+
+    <br>
+
+    <div style="text-align: center;">
+        <img src="https://icorm.org/wp-content/uploads/2017/04/under-construction-sign.jpg" alt="under construction">
+     </div>
+
+
+
+</body>
+
+</html>

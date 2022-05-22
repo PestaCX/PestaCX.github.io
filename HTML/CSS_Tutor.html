@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS-alapozó</title>
+    <link rel="stylesheet" href="styling.css">
+
+</head>
+
+<body>
+ 
+    <table style="position: fixed; background-color: aliceblue;">
+        <thead>
+            <tr>
+                <td><a class="nav_menu" href="index.html">Főoldal</a></td>
+                <td><a class="nav_menu"href="HTML_ELEMEI.html">HTML</a></td>
+                <td><a class="nav_menu"href="CSS_Tutor.html">CSS</a></td>
+                <td><a class="nav_menu"href="about.html">about</a></td>
+            </tr>
+        </thead>
+    </table>
+ 
+    <h1>CSS-alapozó</h1>
+    
+    <h2 class="h2_border">Mire való a CSS?</h2>
+
+    <p>
+       A CSS egy összefoglaló stílusbeállító programnyelv. <br>
+       Arra való, hogy a weboldalon az egyes elemek stílusát,
+       megjelenésének tulajdonságait beállítsuk. Így pl. beállíthatjuk vele az adott elem vagy elemcsoport színét,
+       betűtípusát, pozícionálását és még nagyon sok stílusjellemzőjét. <br>
+       Fontos kiemelni, hogy elemenként is alkalmazható, de komplett elemcsoportokra is.
+       Utóbbinak nyilvánvaló előnye az egységes stílus/megjelenés, és nem mellékes, hogy nem kell az elemeket
+       egyenként átírni, hanem egy komplett csoportot tudunk egyetlen blokkban beállítani.
+    </p>
+
+
+
+    <br>
+
+    <h2 class="h2_border">Hogyan lehet alkalmazni?</h2>
+    
+    <ul>
+        <li>inline</li>
+        <li>internal</li>
+        <li>external</li>
+    </ul>
+
+    <p>
+        Ha a stílusdefiníciók a html-fájlban kerülnek megadásra, akkor a CSS <strong>Inline</strong> vagy <strong>Internal</strong> lehet. 
+    </p>
+
+    <p>
+        <strong>Inline</strong> akkor, ha magában a vonatkozó <em> html-elem </em> definíciójában adjuk meg.
+    </p>
+    
+    <p>
+        <strong>Internal</strong> akkor, ha a <em> html-fájlban, </em> de a head-blokkban,
+         külön (tehát nem az egyes elemeknél), a csoportokra vonatkozóan adjuk meg.
+    </p>
+    
+    <p>
+        Az <strong>inline</strong> esetében minden egyes html-elem stílusát külön kell definiálnunk, aminek nehézsége főleg sok
+        html-elemet tartalmazó oldal esetén nyilvánul meg, hiszen az elemek egyenkénti meghatározása aprólékos munka.
+    </p>
+
+    <p>
+        Az <strong>internal</strong> CSS annyiban jobb, hogy az egy helyen definiált stílusoknak köszönhetően a stíluskészlet
+        áttekinthetőbb lesz, és a többszörösen alkalmazott stílusú elemek stílusának módosítása így egyszerűbb lesz.
+        (Merthogy elég egy helyen átírni a stílust, és az összes olyan stílusú elem megváltozik ezáltal.)
+    </p>
+    
+    <p>
+        <strong>External</strong> CSS-ről akkor beszélünk, amikor a stílusedefiníciókat a html-fájltól elkülönülten, pl. egy style.css 
+        (tetszőleges nevű, de css-kiterjesztésű) fájlban tároljuk.
+        Ez főleg nagy html-fájlok esetében célszerű, főleg akkor, ha azon az oldalon sokféle stíluselemet is alkalmazunk.
+        Másik nagy előnye, hogy a weblap tartalmi és dizájn-fejlesztése így két külön fájlban történik,
+        vagyis a két terület fejlesztője nem zavarja egymás munkáját.
+    </p>
+    
+    <br>
+
+    <h2 class="h2_border">Hogyan tudjuk megadni a CSS-tartalmat?</h2>
+    Az inline és az internal CSS esetében a <strong> style </strong>kulcsszóval tudjuk megoldani.
+
+    <br>
+    
+    <p>
+        Inline CSS esetében. Figyeljük meg, hogy a style kulcsszó és annak attribútumai a nyitó tag-ben vannak benne!
+        Több attribútum megadása esetén azokat pontosvesszővel kell elválasztani. Egyetlen attribútum esetében a pontosvessző
+        elhagyható, de célszerű meghagyni, így nem fogjuk később sem elfelejteni.
+    </p>
+            
+        <div class="code_snippet">
+            Ha a stílust közvetlenül a html-elem definiálásába ágyazva adjuk meg, mint a lenti példánál, akkor 
+            <strong> inline CSS</strong>-t használunk: <br><br>
+            <strong>&lt;h1 style=</strong>"color: blue;"<strong>&gt;</strong>Ide jön a html-elem,
+             amire a formázás is vonatkozik.<strong>&lt;/h1&gt;</strong> <br>
+            <br>
+            Figyeljük meg, hogy itt a style kulcsszó után egyenlőségjel van! 
+            <p style="color:red; font-weight: 900;">És mi van az idézőjellel? Kötelező?</p>
+        </div>
+
+        <br>
+
+        <p>
+            Internal CSS esetében külön tag-ként használjuk a <strong>&lt;style&gt;</strong> kulcsszót,
+            és a vonatkozó html-dokumentum <strong>&lt;head&gt;</strong>-blokkján belül készítünk
+            egy <strong>&lt;style&gt;</strong>-blokkot:
+        </p>  
+
+
+        <div class="code_snippet">
+        
+            <p>
+             Ha a stílust a html-fájl <strong>&lt;head&gt;</strong> részében definiáljuk, 
+             akkor <strong>internal CSS</strong>-t használunk:
+            </p>
+       
+        
+<strong>&lt;head&gt;</strong> <br>
+<span class="comment"> &nbsp; &nbsp; &nbsp; &nbsp; /... (Egyéb kódok)</span> <br> 
+&nbsp; &nbsp; &nbsp; &nbsp;&lt;<strong>style&gt;</strong> <br>
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;<strong>h1</strong> {     <span class="comment">     / megadjuk, hogy mely html-elemtípusra vonatkozzon a stílus</span> <br>
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;color: red; <br>
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;font-size: 24px; <br>
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;} <br>
+&nbsp; &nbsp; &nbsp; &nbsp;<strong>&lt;/style&gt;</strong> <br>
+<strong>&lt;/head&gt;</strong>  <br>
+        
+
+        <p> 
+            Figyeljük meg, hogy pontosvessző van az egyes attribútumok után - nem csak közöttük!
+             Valamint az attribútum-blokkot {kapcsos} típusú zárójelek határolják.
+        </p>
+        
+        </div>
+        
+        <p> 
+            Ez azt jelenti, hogy minden h1-es elem piros és 24px betűméretű lesz az adott html-fájlban.
+            Kivéve, ha ezt az adott html-elemnél helyben, azaz inline-css alkalmazásával felül nem írjuk!
+        </p>
+        
+
+        <br>
+
+        <p>
+            External CSS esetében a stílus-definíciót egy külső fájlban tároljuk. Erre a külső fájlra az érintett html-fájlból
+            egy hivatkozás megadásával tudunk hivatkozni, amit a html <strong>&lt;head&gt;</strong> szekciójában adunk meg:
+        </p>
+
+        <div class="code_snippet">   
+            
+    <strong>&lt;head&gt;</strong> <br>
+                
+    &nbsp;&nbsp;<span class="comment">/ ... (Egyéb kódok)</span> <br>
+                
+    &nbsp;&nbsp;<strong>&lt;link rel=</strong>"stylesheet" href="styling.css"<strong>&gt;</strong> <br>
+
+    &nbsp;&nbsp;<span class="comment">/ A fenti sorban egyedül a fájlnév, amit variálhatunk, a többi kötött elem.</span> <br>
+
+    <strong>&lt;/head&gt;</strong>     
+    </div>  <br>
+
+        <p>
+            A CSS-fájlban (esetünkben styling.css) pedig az alábbi módon adhatunk megy egy stílust:
+        </p>
+
+        <div class="code_snippet">   
+        <pre>
+        <strong>body</strong>  {
+            background-color:blue;
+            }</pre>
+        <p style="font-size:22px ;">
+          Figyeljük meg, hogy az elemnév (jelen esetben a body) itt(!) nem tag-ként van jelen, 
+          vagyis (hasonlóan az internal CSS-hez) nem kacsacsőrök között van! 
+        </p>
+        </div>
+<br>
+        <p>Természetesen akárhány stílusdefiníciót megadhatunk a fenti formátum figyelembevételével.</p>
+
+
+        <br>
+        <br>
+
+        <h2 class="h2_border"3>Mire tudjuk a CSS-stílusainkat alkalmazni?</h2>
+
+        <p>
+            Az eddigi példákból azt láthattuk, hogy olyan objektumokra (elemekre) tudjuk a CSS-formázásainkat
+            vonatkoztatni, amelyek az érintett html-fájlban valamiféle tag-ként (selector) vannak jelen. <br>
+            A példákban a h1 és a body elemekre adtunk meg formázásokat. <br>
+            A CSS-formázások azonban ettől rugalmasabban, más objektumokra is jól használhatók. <br>
+            <br>
+            Ezt úgy valósítja meg a CSS, hogy lehetővé teszi az elemek: 
+            
+            <ul>
+                <li>egyedi beazonosítását (id)</li> 
+                <li>csoportba, osztályokba foglalását (class)</li>
+            </ul>
+        </p>
+
+<br>
+
+        <h3> Elemek egyedi beazonosítása id segítségével </h3>
+        <p>
+            Az id-zett elemekre az id-jükkel lehet hivatkozni. Egy html-oldalon egyazon id egyetlen egyszer fordulhat elő.
+        </p>
+
+        <p>
+            Az id megadásának módja a html-fájlban (példa):
+            <div class="code_snippet">
+                <pre>
+        <strong>&lt;h1 id="unique_id"&gt;</strong> <br></pre>
+                / alapból a h1-es tag lenne az irányadó, de mivel kapott egy id-t,<br>
+                / ezért konkrétan erre az egyetlen h1-es elemre is tudunk hivatkozni <br>
+                / természetesen nem csak a h1 tag-gel, hanem mással is használható
+            </div>
+        </p>
+
+        <br>
+        
+        <p>
+            Az id felhasználásának módja a CSS-fájlban:
+            <div class="code_snippet">
+               <pre>
+        <strong>#unique_id</strong> {
+                color:blue;   
+                }</pre> 
+        <p>/ Amint láthatjuk, az egyedi id-névre egy # szimbólum hozzáadásával tudunk hivatkozni.</p>       
+        
+            </div>
+            Ezzel a módszerrel az adott elemtípusra vonatkozó általános formázástól való eltérés esetén célszerű egyedileg formázni.
+        </p>
+
+<br> <br>
+
+        <h3> Elemek beazonosítása class segítségével </h3>
+        <p>
+            Class-t, vagyis osztályt magunk létre tudunk hozni.
+            Az osztály alapja az, hogy valamiért szeretnénk az objektumokat egy csoportba forglalni.
+            Ezen objektumok csoportját, vagyis az osztályt (class) a későbbiekben egy kalap alatt tudjuk kezelni, 
+            vagyis pl. össze tudjuk vonni a rájuk vonatkozó formázást - már amennyiben ugyanúgy szeretnék a class elemeit formázni.
+        </p>
+
+        <p>
+            A class megadásának módja a html-fájlban (példa):
+            <div class="code_snippet">
+                <pre>
+        <strong>&lt;h1 class="osztály"&gt;</strong> <br></pre>
+                / Ezzel <strong>ezt</strong> az elemet (de nem az összes h1-est!) besoroltuk az "osztály" nevű class-ba.<br>
+                
+            </div>
+        </p>
+
+        <br>
+        <p>
+            A class felhasználásának módja a CSS-fájlban:
+            <div class="code_snippet">
+               <pre>
+        <strong>.osztály</strong> {
+                color:blue;   
+                }</pre> 
+        <p>/ Amint láthatjuk, a class-ra egy pont (.) szimbólum hozzáadásával tudunk hivatkozni.</p>       
+        
+       </div>
+            
+        </p>
+
+        
+        <p>
+            A class alkalmazásának előnye tehát az, hogy tetszőleges elemeket vonhatunk össze,
+            amelyeket aztán a továbbiakban egyetlen csoportként tudunk kezelni.
+        </p>
+        
+        <br><br><br>
+ 
+   
+
+  
+
+   <h2 class="h2_border"> A &lt;span&gt; és a &lt;div&gt; használata </h2> 
+   <p>
+       Mind a kettő egy másik elemen belül különít el egy darabot, egy al-blokkot.
+       A <strong>&lt;span&gt;</strong> inline típusú, a <strong>&lt;div&gt;</strong> pedig blokk típusú.
+       Használatukkal lehetővé válik egy adott soron / blokkon belül az ott meglevő formázás megváltoztatása a 
+       <strong>&lt;span&gt;</strong> vagy a <strong>&lt;div&gt;</strong> határain belül.
+   </p>
+   <br>
+   <p>
+       A <strong>&lt;span&gt;</strong> használata inline CSS-ként:
+<div class="code_snippet">
+ <p>Ez egy egybefüggő szöveg, aminek <span style="color:red">ezt a részét</span> szeretném a span-nal megváltoztatni.</p>
+    Az erre szolgáló kód: <br>
+    Ez egy egybefüggő szöveg, aminek <br> <span style="background-color:yellow";><strong>&lt;span style="color:red"&gt;ezt a részét&lt;/span&gt;</strong></span> 
+      <br> szeretném a span-nal megváltoztatni.
+ 
+</div>
+<br>
+<p>
+    A <strong>&lt;span&gt;</strong> használata external CSS-ként, class-szal:
+    <div class="code_snippet">
+     
+<p>
+     Ez egy egybefüggő szöveg, aminek <span class="span1">ezt a részét</span> szeretném 
+    a span-nal megváltoztatni.
+</p>
+
+<p>
+Az erre szolgáló kód a html-ben:
+</p>
+
+<p>
+Ez egy egybefüggő szöveg, aminek <span style="background-color:yellow";><strong>&lt;
+span class="span1"&gt; ezt a részét &lt;/span&gt;</strong></span> szeretném a span-nal megváltoztatni.
+</p>
+
+<p>
+A kód a CSS-ben:
+</p>
+<pre><strong>.span1 {
+        color:red;
+        }</strong></pre>
+</div>
+Ebben az esetben a <strong>&lt;span&gt;...&lt;/span&gt;</strong> által kijelölt szegmenst
+ hozzáadtuk egy osztályhoz (class), amit a CSS-ből szelektorral hivatkozva megformáztunk.
+   </p>
+   A <strong>&lt;div&gt;</strong> teljesen ugyanígy működik azzal az eltéréssel,
+   hogy nem inline, hanem blokk elemek esetén használjuk.
+   Ennek az a következménye, hogy a <strong>&lt;div&gt;</strong> a képernyő teljes szélességében elfoglalja
+    a neki szükséges sorokat.
+    A használatát nem részletezem a <strong>&lt;span&gt;</strong>-nal való egyezése miatt.
+
+   <br><br><br>
+
+<div style="text-align: center;">
+   <img src="https://icorm.org/wp-content/uploads/2017/04/under-construction-sign.jpg" alt="under construction">
+</div>
+   
+   <h1> Saját font-type beállítása és használata</h1>
+    <div>
+    @font-face {
+            font-family: "oswald"; (Erre az oswald-ra hivatkozva lehet majd font-family-t beállítani)
+            src: url("fonts-ahol van")
+            font-weight: 500;
+    }
+    </div>
+
+  
+
+
+
+</body>
+</html>

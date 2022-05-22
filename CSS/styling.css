@@ -1,0 +1,74 @@
+body  {
+    background-color:rgb(244, 249, 248);
+    font-size: 26px;
+    max-width: 100%;
+}
+
+
+ img {
+    box-shadow: 3px 3px 17px;
+ }
+
+
+h1 {
+    color:rgb(229, 109, 22);
+    text-align: center;
+    text-decoration: underline;
+}
+
+
+.h2_border {
+    padding: 10px 5px 5px 10px;
+    border-top: dashed 1px;
+    box-shadow: 3px 3px 7px;
+    background-color:cornsilk ;
+}
+
+
+#p1 {
+    text-align: center;
+    font-family: 'Smooch', cursive;
+}
+
+
+.code_snippet {
+    font-family: monospace;
+    color: blue;
+    background-color: aquamarine;
+    font-size:32px;
+    box-shadow: 3px 3px 17px;
+    }
+
+
+.span1 {
+    color: red;
+    /*background-color: green;*/
+}
+
+
+.comment {
+    color:red;
+    font-size:22px;
+}
+
+
+.paragraph {
+    border-top: dashed 1px;
+}
+
+
+.nav_menu:hover {
+    background-color: #c0c0c0;
+}
+
+
+.gfg {
+    all:unset;
+}
+
+
+.gfg2 {
+    color: unset;
+    text-decoration: unset;
+    text-align: unset;  
+}
