@@ -4,9 +4,225 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Forms</title>
+    <link rel="stylesheet" href="\CSS\styling.css">
 </head>
 <body>
     
+    <table style="position: fixed; background-color: aliceblue;">
+        <thead>
+            <tr>
+                <td><a class="nav_menu" href="index.html">Főoldal</a></td>
+                <td><a class="nav_menu"href="HTML_ELEMEI.html">HTML</a></td>
+                <td><a class="nav_menu"href="CSS_Tutor.html">CSS</a></td>
+                <td><a class="nav_menu"href="about.html">about</a></td>
+            </tr>
+        </thead>
+    </table>
+
+    <h1> Űrlapok </h1>
+
+    <h2 class="h2_border"> Mire valók az űrlapok?</h2>
+    <p> Elsősorban adatok bevitelére a weboldalon keresztül,
+         bár ez a dolog közel sem ilyen egyszerű.</p>
+    <p> Azért nem egyszerű, mert elkészíthetjük mi a weboldalunkon az űrlap-elemeket,
+        de az általa bevitt adatokkal valamit kezdeni kell, vagyis pl. valahova el kell tudni
+        tárolni azokat.</p>
+    <p> Márpedig adatok kezelésére a HTML nem alkalmas, ami azt jelenti, hogy ha ezekkel az
+        adatokkal valami hasznos dolgot szeretnénk csinálni, akkor más programra is szükségünk
+        lesz.
+    </p>
+    <p> De egyelőre maradjunk a HTML-nél, és ismerkedjünk meg azzal, hogy miként lehet
+        egyáltalán űrlapokat készíteni.
+    </p>
+    <p> Az űrlap valójában nem más, mint beviteli mezők összessége. Általában többféle 
+        adatot szoktunk megadni.
+    </p>
+    <p> De kezdetnek nézzük meg, miként tudunk beviteli mezőt, mezőket készíteni!</p>
+    
+    <br>
+
+
+    <h2 class="h2_border">Szöveg bevitelére szolgáló mezők</h2>
+   
+    <p>
+        Az adatbevitelre alapvetően az <strong>&lt;input&gt;</strong> mezők szolgálnak.
+         Az <strong>&lt;input&gt;</strong>-nak nincs záró tag-je. Van azonban egyedi azonosítója 
+         <strong>&lt;id&gt;</strong>(amiből ugye elvileg csak egy lehet egy weblapon)
+        és van neki neve <strong>&lt;name&gt;</strong>- ami viszont egy másik szintű
+         azonosítóként működik.
+        Van továbbá típusa <strong>&lt;type&gt;</strong>, ami meghatározza, 
+        hogy milyen jellegű adatot fogad 
+        - esetünkben szöveget.
+        Ahhoz, hogy a felhasználót tájékoztassuk az adott beviteli mező jelentéséről,
+        <strong>&lt;label&gt;</strong>-t, vagyis címkét adunk neki.
+    </p>
+
+    <div class="code_snippet">
+        <p>
+            <strong>&lt;label&gt;</strong> címke <strong>&lt;/label&gt;</strong> <br>
+            <strong>&lt;input id=</strong>"id_azonosító" <strong>name=</strong>"név_de_mi?"
+            <strong>type="</strong>text"<strong>&gt;</strong>
+        </p>
+    </div>
+
+    <p> 
+        Alapból a beviteli mezőbe kell ahhoz kattintani, hogy abba bármit is írni tudjunk.
+        Van azonban arra lehetőség, hogy címkére kattintás is ugyanezt a hatást váltsa ki.
+        Ehhez egyértelművé kell tenni, hogy a label címke melyik input mezőhöz tartozik.
+        Ezt így lehet megadni:
+    </p>
+
+    <div class="code_snippet">
+        <p>
+            <strong>&lt;label for=</strong>"id_azonosító"<strong>&gt;</strong> címke <strong>&lt;/label&gt;</strong> <br>
+            <strong>&lt;input id=</strong>"id_azonosító" <strong>name=</strong>"név_de_mi?"
+            <strong>type="</strong>text"<strong>&gt;</strong>
+        </p>
+    </div>
+
+
+
+    <p>
+        Az alábbi két beviteli mező látszólag azonos, de nem egyformán viselkednek.
+        A felsőnél csak a beviteli mezőbe kattintva írhatunk, az alsónál a címkére is 
+        kattinthatunk ebből a célból:
+    </p>
+
+    <form>
+    
+        <div>
+     <!-- Alább egy beviteli mező és annak címkéje kerül leírásra:-->   
+        <label>Név</label> <!-- Ez a címkéje a beviteli mezőnek.-->
+        <input id="name" name="name" type="text" required> Ez a sima label-es változat.
+        </div>
+
+        <div>
+     <!-- Ugyanez továbbfejlesztve azzal, hogy a címkére kattintva is a 
+    beviteli mezőre kerüljön a fókusz. Lásd: label for= .... 
+    Ezt az id teszi lehetővé:-->   
+        <label for="name1">Név</label> <!-- Ez a címkéje a beviteli mezőnek.-->
+        <input id="name1" name="name1" type="text" required> Ez pedig a label for="" változat.
+        </div>
+    </form>
+
+    <br>  <br>
+
+
+    <h2 class="h2_border">Előre meghatározott tételek bevitelére szolgáló mezők</h2>
+
+    <p>
+        Ebbe a csoportba tartoznak a <strong>"checkbox"</strong> és 
+        a <strong>"radio"</strong> típusú mezők. <br>
+        A <strong>"checkbox"</strong>-ot akkor szokás használni, amikor a választéklistából 
+        több elem kiválasztása is megengedett. <br>
+        A <strong>"radio"</strong> ezzel szemben egyetlen elem választását engedi meg
+         bizonyos paraméterek (megfelelő) megadása esetén.
+    </p>
+
+
+<fieldset>
+    
+    <legend> checkbox (bármelyik választható)</legend>
+    
+    <form>
+            
+        <div>
+            <label for="item1">tétel_1</label> <!-- Ez a címkéje a beviteli mezőnek.-->
+            <input id="item1" name="item" type="checkbox">
+        </div>
+        
+        <div>  
+            <label for="item_2">tétel_2</label> <!-- Ez a címkéje a beviteli mezőnek.-->
+            <input id="item_2" name="item" type="checkbox">
+        </div>
+    
+        <div>  
+            <label for="item_3">tétel_3</label> <!-- Ez a címkéje a beviteli mezőnek.-->
+            <input id="item_3" name="item" type="checkbox">
+        </div>
+
+    </form>
+
+</fieldset>
+    
+
+<br>
+
+
+<fieldset>
+    
+    <legend> radio (csak egy választható)</legend>
+    
+    <form>
+        
+        <div>
+            <label for="radio_item1">tétel_1</label> <!-- Ez a címkéje a beviteli mezőnek.-->
+            <input id="radio_item1" name="item" type="radio">
+        </div>
+        
+        <div>  
+            <label for="radio_item_2">tétel_2</label> <!-- Ez a címkéje a beviteli mezőnek.-->
+            <input id="radio_item_2" name="item" type="radio">
+        </div>
+    
+        <div>  
+            <label for="radio_item_3">tétel_3</label> <!-- Ez a címkéje a beviteli mezőnek.-->
+            <input id="radio_item_3" name="item" type="radio">
+        </div>
+A radio esetében a többszörös kiválasztás akkor nem lehetséges, ha minden tételnek a neve 
+(name) azonos. Ebből tudja a böngésző, hogy az azonos nevű tételek köréből szabad csak
+1-et választani.
+    </form>
+
+</fieldset> A példában a form-on belül van! (Merthogy egy ömlesztett űrlapot tagol vele.)
+
+
+<p>
+    Az eddigiek alapján úgy tűnik, hogy a "name" attribútum úgy működik, mintha
+    egy osztályt definiálnánk. Több elem name-je is lehet azonos, de az id-k egyediek
+    kell, hogy legyenek!
+</p>
+<p>
+    Közben találtam mást is: ha nincs name attribútum, akkor nincs átadott érték sem!
+     Tehát a name olyan, mintha a mezőbe vitt értéket képviselné.
+</p>
+
+<p>
+    Az űrlap-szegmensek bekeretezése a &lt;fieldset&gt;-tel történik.
+    A keretre kerülő szöveg pedig a &lt;legend&gt;-del adható meg.
+</p>
+
+<p>
+    Select: ezesetben egy legördülő listából kell választani. A listaelemeket option-okkal
+        felsorolni.
+   
+</p>
+<form>
+    <label for="cars">Choose a car:</label>
+    <select id="cars" name="cars">
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+    <option value="fiat">Fiat</option>
+    <option value="audi">Audi</option>
+</select>
+</form>
+
+<p>
+ A button tag-gel egy klikkelhető gombot teszek ki, amivel eseményt/akciót tudok generálni:   
+<button type="button" onclick="alert('Hello World!')">Click Me!</button> 
+</p>
+
+<p>
+    A &lt;form&gt; -nak neve is lehet (&lt;form name="űrlapnév"&gt;), ennek akkor lesz jelentősége, amikor az űrlap
+    beküldését követően hivatkozni kell az űrlapra (a neve által).
+</p>
+
+<p>
+    Input type-ból elég sok van, itt a reference:
+    <a href="https://www.w3schools.com/html/html_form_input_types.asp">Input type-ok</a>
+</p>
+
+
 </body>
 </html>
