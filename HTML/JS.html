@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/styling.css">
+    <title>JavaScript alapok</title>
+</head>
+
+<body>
+<h1>JavaScript alapok</h1>    
+
+<h2 class="h2_border"> Mire jó a JavaScript?</h2>
+<p> A weboldalakat a html-kód többnyire csak statikus,
+     vagyis nem változó adatokkal tudja felölteni. Ennek a következménye, hogy a 
+    weboldal "buta" marad, hiszen egy egyszerű számtani műveletet sem tud elvégezni.
+    Ezen segít a JavaScript (a továbbiakban csak JS), mivel a JS képes az adatokkal bánni.
+    A megjelenítés továbbra is a HTML kód feladata lesz.
+</p>
+
+<h2 class="h2_border">Hogyan kapcsolódik a JS a HTML-hez?</h2>
+<p> Ennek két módja lehetséges: <br>
+<ul>
+    <li>inline - a html-kód sorai között</li>
+    <li>external - ekkor egy külső fájlban van a script, és csak arra hivatkozunk a html-ben</li>
+</ul>
+</p>
+
+<p>
+    A JS programoknak a neve "script" - mint ahogy a JavaScript nevében benne is van.
+    Egy komplexebb weboldalon nagyon sok script futhat attól függően, hogy mennyi olyan
+    elem van a weblapon, amelyik programozást, számítást igényel. <br>
+    Egyértelmű, hogy ha egy weblapon közvetlen a HTML-kódban adjuk meg a JS scripteket, akkor
+    a html-kódunk egyre bonyolultabb, áttekinthetetlenebb lesz - hasonlóan, mint ahogy 
+    a CSS is összezavarja a kódot, ha túl sok van belőle.
+</p>
+<p>
+    A JS script(ek)et a &lt;script&gt;...&lt;/script&gt; tag-ek által határolt szekcióba lehet
+    írni. Egy html-fájlban több helyen is lehet script. 
+</p>
+
+<p> 
+    A megadás módja inline-kódként:
+</p>
+
+<div class="code_snippet">
+&lt;body&gt; <br>
+&nbsp;&nbsp;&lt;script>  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;    ... JavaScript program <br>
+&nbsp;&nbsp;&lt;/script&gt;   <br>
+&lt;/body&gt;    
+</div>
+
+<p>Vagy a külső JS-et tartalmazó fájlra való hivatkozás:</p>
+
+<div class="code_snippet">
+    &nbsp;&nbsp;&lt;script href="JS_fájl"&gt;  <br>
+    
+    <p class="comment">/A JS-fájlt természetesen elérési útvonallal együtt kell megadni!</p>
+
+</div>
+
+
+<p>
+    Bár JS lehet elvileg a head vagy a body szekcióban is, legcélszerűbb a body végére, tehát a 
+    html értelmezése utáni részre tenni, hogy a JS számára rendelkezésre álljon a html-ben megadott
+    elem. Fordított esetben a JS-et olyan művelet elvégzésére kényszeríthetjük, amihez még nem 
+    érhető el a szükséges html-elem. 
+</p>
+
+</body>
+</html>
