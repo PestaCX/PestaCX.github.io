@@ -10,15 +10,15 @@
 
 <body>
 <h1>JavaScript alapok</h1>    
-
+<br>
 <h2 class="h2_border"> Mire jó a JavaScript?</h2>
 <p> A weboldalakat a html-kód többnyire csak statikus,
-     vagyis nem változó adatokkal tudja felölteni. Ennek a következménye, hogy a 
+     vagyis nem változó adatokkal tudja feltölteni. Ennek a következménye, hogy a 
     weboldal "buta" marad, hiszen egy egyszerű számtani műveletet sem tud elvégezni.
     Ezen segít a JavaScript (a továbbiakban csak JS), mivel a JS képes az adatokkal bánni.
     A megjelenítés továbbra is a HTML kód feladata lesz.
 </p>
-
+<br>
 <h2 class="h2_border">Hogyan kapcsolódik a JS a HTML-hez?</h2>
 <p> Ennek két módja lehetséges: <br>
 <ul>
@@ -36,7 +36,7 @@
     a CSS is összezavarja a kódot, ha túl sok van belőle.
 </p>
 <p>
-    A JS script(ek)et a &lt;script&gt;...&lt;/script&gt; tag-ek által határolt szekcióba lehet
+    A JS script(ek)et a <strong> &lt;script&gt;...&lt;/script&gt; </strong>tag-ek által határolt szekcióba lehet
     írni. Egy html-fájlban több helyen is lehet script. 
 </p>
 
@@ -51,7 +51,7 @@
 &nbsp;&nbsp;&lt;/script&gt;   <br>
 &lt;/body&gt;    
 </div>
-
+<br>
 <p>Vagy a külső JS-et tartalmazó fájlra való hivatkozás:</p>
 
 <div class="code_snippet">
@@ -60,12 +60,13 @@
     <p class="comment">/A JS-fájlt természetesen elérési útvonallal együtt kell megadni!</p>
 
 </div>
-
+<br>
 
 <p>
     Bár JS lehet elvileg a head vagy a body szekcióban is, legcélszerűbb a body végére, tehát a 
-    html értelmezése utáni részre tenni, hogy a JS számára rendelkezésre álljon a html-ben megadott
-    elem. Fordított esetben a JS-et olyan művelet elvégzésére kényszeríthetjük, amihez még nem 
+    html értelmezése utáni részre tenni, hogy a JS számára rendelkezésre álljon 
+    a html-ben megadott elem. (Mivelhogy a html-fájl értelmezése fentről lefelé történik.)
+     Fordított esetben a JS-et olyan művelet elvégzésére kényszeríthetjük, amihez még nem 
     érhető el a szükséges html-elem. 
 </p>
 
