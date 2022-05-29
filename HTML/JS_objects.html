@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS - Objects</title>
+    <link rel="stylesheet" href="\CSS\styling.css">
+</head>
+
+<body>
+    
+    <div class="menuLine">
+       
+        <li class="nav_menu inLineMenu"><a href="index.html">&nbsp;&nbsp;Főoldal&nbsp;&nbsp;</a></li>
+        <li class="nav_menu inLineMenu"><a href="HTML_ELEMEI.html">&nbsp;&nbsp;HTML&nbsp;&nbsp;</a></li>
+        <li class="nav_menu inLineMenu"><a href="CSS_Tutor.html">&nbsp;&nbsp;CSS&nbsp;&nbsp;</a></li>
+        <li class="nav_menu inLineMenu"><a href="about.html">&nbsp;&nbsp;about&nbsp;&nbsp;</a></li>
+       
+        <li class="nav_menu inLineMenu dropdown">
+            <a href="javascript:void(0)" class="dropbtn">Dropdown</a>
+            <div class="dropdown-content">
+              <a href="#">Link 1</a>
+              <a href="#">Link 2</a>
+              <a href="#">Link 3</a>
+          
+            </div>
+    </div>
+
+
+    <h1> Objektumok a JavaScript-ben</h1>
+
+
+    <h2 class="h2_border"> Mik azok az objektumok?</h2>
+
+    <p>
+        Az objektum olyan értékcsoport, amely egy adott tárgykör köré
+        csoportosított értékeket tartalmaz. <br>
+        Ezt általában arra használjuk, hogy a való életből vett objektumokat
+        modellezzünk benne.
+        Ezen értékek egy része megnevez egy bizonyos tulajdonságot, 
+        egy másik részük pedig az erre a tulajdonságra vonatkozó értéket tárolja.
+        Ez gyakorlatilag adat-párokat jelent, aminek a részeit 
+        <em>key-value</em> párnak nevezzük. <br>
+    </p>
+
+    <p>
+         Egy objektumnak van neve, és vannak benne key-value adat-párok
+        aszerint, hogy az obejktumnak hányféle tulajdonságát tároljuk.
+    </p>
+
+    <p class="tananyag"> 
+                A tananyag-beli leírás szerint:
+        Az objektum - rugalmas adattárolás <br>
+        Adatok tárolása kulcs-érték párok segítségével. 
+        Ez az objektum. Abban a tekintetben hasonlít a tömbökre,
+         hogy egy kollekció, amiben bármilyen típusú adatot tárolhatsz,
+          akár tömböket vagy másik objektumokat is.
+           Más programnyelvekben nem így hívják ezt az adattípust,
+            de mindegyikben van megfelelője.
+</p>
+
+<p class="tananyag"> <b> key - kulcs </b><br>
+Az objektumok esetén nem automatikusan indexelődnek az elemek,
+ mint a tömb esetén, hanem mi határozzuk meg a kulcs-érték párokat.
+A kulcsoknak minden esetben String típusúaknak kell lenniük. <br>
+<b> value - érték </b><br>
+A kulcsokkal jelölt értékeket tulajdonságoknak is nevezik.
+ Az alábbi példában egy egyszerű objektum létrehozását láthatod.
+  Figyeld meg, hogy az objektumot kapcsos zárójelek határolják,
+   a kulcs-érték párokat vesszők, a kulcsot pedig kettőspont választja
+    el az értéktől:
+</p>
+
+<p class="tananyag">
+   <b> Object.keys() </b>  az objektum kulcsai <br>
+Az objektumok esetén fontos, hogy tudd mit tárolsz bennük.
+ Mivel az objektum elemeit a kulcsok segítségével éred el,
+  ezért nem árt tudni, hogy milyen kulcsok vannak egy objektumban.
+   Ezeket a kulcsokat pedig az Object.keys metódus adja vissza.
+Az Object.keys metódus tömb formában adja vissza a kapott objektum
+ kulcsait.
+Az objektum tulajdonságait úgy tudod elérni, hogy az objektum neve után
+ ponttal elválasztva megadod a kiválasztott tulajdonság kulcsát,
+  vagy szögletes zárójelek között  [ ] String -ként adod meg:
+</p>
+
+<p class="tananyag">
+    <b> Az objektum hossza </b> <br>
+    Az objektumoknak nincs length tulajdonsága, mint a tömböknek,
+     ezért más módszerhez kell folyamodnod, ha szeretnéd megtudni
+      az elemeiknek a számát. Erre a legegyszerűbb módszer, ha 
+      nem az elemeiket, hanem a kulcsaikat számolod meg.
+    Figyelem: a példában láncolt metódus hívást alkalmazunk.
+    Ennek lényege, hogy egy függvény által visszaadott típusra
+     azonnal meghívod annak szabványos metódusát vagy lekéred egy 
+     adott tulajdonságát, jelen esetben a tömb elemeinek számát,
+      azaz a tömb hosszát. <br>
+    Az Object.keys tömböt ad vissza, majd annak le is kérheted
+     azonnal a length tulajdonságát:
+
+</p>
+
+    <h2 class="h2_border"> Objektum megadásának módja</h2>
+    <p>Megadásuk egyik módja a következő:</p>
+
+    <div class="code_snippet">
+        objectName = { <br>
+            &nbsp;&nbsp;&nbsp;&nbsp; key1 : value1, <br>
+            &nbsp;&nbsp;&nbsp;&nbsp; key2 : value2, <br>
+            &nbsp;&nbsp;&nbsp;&nbsp; key3 : value3, <br>
+            &nbsp;&nbsp;&nbsp;&nbsp; .  <br> 
+            &nbsp;&nbsp;&nbsp;&nbsp; . <br>
+            &nbsp;&nbsp;&nbsp;&nbsp; keyx : valuex, <br>
+        };
+        <p class="comment">
+            /Megadjuk az objektum nevét, és annak elemeit.
+            Az elemeket kapcsos zárójelben. <br>
+            /A key-value párokat a felsorolásban vessző választja el,
+             míg a key-t a value-tól kettősponttal választjuk el.
+        </p>
+    </div> <br>
+
+    <p>Ugyanez, kicsit életszagúbb példával:</p>
+
+    <div class="code_snippet">
+        autóink = { <br>
+            &nbsp;&nbsp;&nbsp;&nbsp; gyártmány : "Daewoo", <br>
+            &nbsp;&nbsp;&nbsp;&nbsp; modell : "Matiz", <br>
+            &nbsp;&nbsp;&nbsp;&nbsp; évjárat : 2000, <br>
+            &nbsp;&nbsp;&nbsp;&nbsp; szín :  "arany",  <br> 
+            &nbsp;&nbsp;&nbsp;&nbsp; km : 59100 <br>
+        };
+        <p class="comment">
+            /Van tehát egy Daewoo Matiz autónk, ami 2000-es évjáratú,
+            aranyszínű, és 59100km van benne.
+        </p>
+    </div>
+    <p> Ezzel tehát létrehoztunk egy "autóink" nevű objektumot.</p>
+    
+    <p>A fenti megadási módozat akkor jó, ha kapásból adatokat is 
+        adunk meg az objektum létrehozásával együtt. 
+    </p>
+    <p>
+        De arra is van lehetőségünk, hogy "üres" objektumot hozzunk létre.
+        Ezt az objektum-konstruktorral tehetjük meg, kétféle megadási 
+        módja van:
+    </p>
+
+    <div class="code_snippet">
+
+        <p> let user = new Object();</p>
+
+        <snap class="comment">/ Ennek van egy még egyszerűbb módja:</snap>  
+
+        <p>let user = {};</p>
+
+    </div>
+
+
+    <br>
+    <p> Ennek az obejktumnak az elemeire többféleképpen is hivatkozhatunk:
+    </p>
+    
+    <div class="code_snippet">
+        autóink.gyártmány  <span class="comment"> vagy </span>autóink[gyártmány]<span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;/= Daewoo</span> <br>
+        autóink.modell <span class="comment"> vagy </span> autóink[modell]<span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;/= Matiz</span> <br>
+        autóink.évjárat <span class="comment"> vagy </span> autóink[évjárat]<span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;/= 2000</span> <br>
+        autóink.szín <span class="comment"> vagy </span> autóink[szín] <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;/= arany</span> <br>
+        autóink.km <span class="comment"> vagy</span> autóink[km] <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;/= 59100</span> <br>
+    
+        
+    </div> <br>
+
+    <p>
+        Az objektumok ezen használatának módja azért előnyös, 
+        mert így az egy objektumhoz tartozó adatok egy csoportban vannak,
+        nincsenek szanaszét, rendezetlenül.
+    </p>
+
+    <br>
+
+
+
+
+
+
+
+
+    <p>
+        Jó tudni, hogy az objektumok tulajdonképpen tömbök, aminek egyik
+        érdekes "bizonyítéka", hogy az alábbi módon is megadhatók:
+
+    </p>
+
+
+</body>
+</html>

@@ -7,3 +7,5 @@ function calcAmount() {
     showAmount.innerHTML = összeg;
 
 }
+
+getWeather
