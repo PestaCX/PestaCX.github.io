@@ -18,7 +18,7 @@
         <li class="nav_menu inLineMenu"><a href="about.html">&nbsp;&nbsp;about&nbsp;&nbsp;</a></li>
        
         <li class="nav_menu inLineMenu dropdown">
-            <a href="javascript:void(0)" class="dropbtn">Dropdown</a>
+            <a href="javascript:void(0)" class="dropbtn">&nbsp;&nbsp;Dropdown&nbsp;&nbsp;</a>
             <div class="dropdown-content">
               <a href="#">Link 1</a>
               <a href="#">Link 2</a>
@@ -124,7 +124,7 @@ Az objektum tulajdonságait úgy tudod elérni, hogy az objektum neve után
     <p>Ugyanez, kicsit életszagúbb példával:</p>
 
     <div class="code_snippet">
-        autóink = { <br>
+        autó = { <br>
             &nbsp;&nbsp;&nbsp;&nbsp; gyártmány : "Daewoo", <br>
             &nbsp;&nbsp;&nbsp;&nbsp; modell : "Matiz", <br>
             &nbsp;&nbsp;&nbsp;&nbsp; évjárat : 2000, <br>
@@ -136,11 +136,29 @@ Az objektum tulajdonságait úgy tudod elérni, hogy az objektum neve után
             aranyszínű, és 59100km van benne.
         </p>
     </div>
-    <p> Ezzel tehát létrehoztunk egy "autóink" nevű objektumot.</p>
+    <p> Ezzel tehát létrehoztunk egy "autó" nevű objektumot.</p>
     
     <p>A fenti megadási módozat akkor jó, ha kapásból adatokat is 
         adunk meg az objektum létrehozásával együtt. 
     </p>
+    <br>
+
+    <p>
+         Ennek az obejktumnak az elemeire többféleképpen is hivatkozhatunk:
+    </p>
+    
+    <div class="code_snippet">
+        autó.gyártmány  <span class="comment"> vagy </span>autó[gyártmány]<span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;/= Daewoo</span> <br>
+        autó.modell <span class="comment"> vagy </span> autó[modell]<span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;/= Matiz</span> <br>
+        autó.évjárat <span class="comment"> vagy </span> autó[évjárat]<span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;/= 2000</span> <br>
+        autó.szín <span class="comment"> vagy </span> autó[szín] <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;/= arany</span> <br>
+        autó.km <span class="comment"> vagy</span> autó[km] <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;/= 59100</span> <br>
+    
+        
+    </div>
+
+    <br>
+
     <p>
         De arra is van lehetőségünk, hogy "üres" objektumot hozzunk létre.
         Ezt az objektum-konstruktorral tehetjük meg, kétféle megadási 
@@ -149,7 +167,7 @@ Az objektum tulajdonságait úgy tudod elérni, hogy az objektum neve után
 
     <div class="code_snippet">
 
-        <p> let user = new Object();</p>
+        <p> let user = new Object(); <span class="comment">/Szigorúan nagy "O"-val írandó az object!</span> </p>
 
         <snap class="comment">/ Ennek van egy még egyszerűbb módja:</snap>  
 
@@ -159,18 +177,6 @@ Az objektum tulajdonságait úgy tudod elérni, hogy az objektum neve után
 
 
     <br>
-    <p> Ennek az obejktumnak az elemeire többféleképpen is hivatkozhatunk:
-    </p>
-    
-    <div class="code_snippet">
-        autóink.gyártmány  <span class="comment"> vagy </span>autóink[gyártmány]<span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;/= Daewoo</span> <br>
-        autóink.modell <span class="comment"> vagy </span> autóink[modell]<span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;/= Matiz</span> <br>
-        autóink.évjárat <span class="comment"> vagy </span> autóink[évjárat]<span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;/= 2000</span> <br>
-        autóink.szín <span class="comment"> vagy </span> autóink[szín] <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;/= arany</span> <br>
-        autóink.km <span class="comment"> vagy</span> autóink[km] <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;/= 59100</span> <br>
-    
-        
-    </div> <br>
 
     <p>
         Az objektumok ezen használatának módja azért előnyös, 
@@ -188,11 +194,93 @@ Az objektum tulajdonságait úgy tudod elérni, hogy az objektum neve után
 
 
     <p>
-        Jó tudni, hogy az objektumok tulajdonképpen tömbök, aminek egyik
-        érdekes "bizonyítéka", hogy az alábbi módon is megadhatók:
-
+       Az objektum gyakorlatilag hivatkozás egy adatcsoportra.
+       Ez összhangban áll azzal, miszerint ha a függvény objektumot kap
+       argumentumként, akkor a függvény a teljes objektumot átadja, nem csak
+       az objektum elemeinek másolatát. <br>
+       (Ezzel jó vigyázni, mert ebben a vonatkozásban a sima változók
+       és az objektumok máshogyan viselkednek a függvényekkel!) <br>
+       Ez valószínűleg azért van így, mert egy objektum sok al-adatot
+       tartalmazhat, és az objektumon dolgozó függvény hívásakor egyáltalán 
+       nem biztos, hogy mindegyik al-adat kell a függvénynek. <br>
+       Azt azonban simán el tudom képzelni, hogy ha egy objektum egy 
+       bizonyos elemére hivatkozva hívok egy függvényt, akkor ott csak az
+       adott érték másolata kerül át a függvénybe - de ezt majd kipróbáljuk!
+     <br>
+       Vagyis az objektum olyan, mint egy címke (azonosító) alatti változók
+       gyűjteménye. <br>
+       A további változóknak van neve (key), és van értéke (value).
+       Valószínűleg ezt hívják asszociatív tömbnek - összerendelt tömbnek.
+       (Utánaolvastam a stackoverflow-n, és tényleg! :-) )
     </p>
 
+    <h2 class="h2_border">A for ... in ciklus <span class="code_snip">/ for (keyvariable in objectName)</span> </h2>
+    <p>
+         Erre azért van szükség, mert a sima tömbökkel ellentétben
+         az objektumoknak nincs length tulajdonsága ( <span class="code_snip">Array.length</span>  létezik, de <span class="code_snip">Object.length</span> nincs.). Emiatt pedig ily
+         módon nem tudjuk a hosszát meghatározni, ebből következően 
+         a hagyományos iterációs ciklust nem tudjuk rá alkalmazni.
+    </p>
+
+    <div class="code_snippet">
+        <b>for</b> (let k <b>in</b> user) {   <span class="comment"> / ahol user egy objektum<object data="" type=""></object></span> <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;console.log("Key:", k, "Value:", user[k]); <br>
+        }
+
+    </div>
+
+    <p>
+        A fenti formula először kiolvassa a <b> kulcsokat,</b> majd azokra 
+        hivatkozva kiolvassa a hozzájuk tartozó értékeket.  <br>
+         A kulcsok ugye 
+        elsősorban string-típusúak lehetnek az objektumok esetében. <br>
+        Ugye "k" itt egy változó. Az <span class="code_snip">object.key</span>  formájú megadásból kiindulva a "key"
+        egy string, de nem egy változó.
+        Ha nincs "k" nevű(!) kulcs az objektumban, akkor a <span class="code_snip">user.k</span>  
+        megadás nem fog működni.
+        A <span class="code_snip"> user[k] </span>azonban igen - a k idézőjel nélkül, változói minőségében van itt!
+        <br>
+        Ez a fajta for ... in ciklus tömbökkel is működik! <br>
+        Mégpedig azért, mert a tömb a string-ként reprezentált 
+        index-változót (ami egyébként egy szám, ugyebár...) is
+         számként értelmezi! (Számunkra kedvező módon.) <br>
+        Ebből következik, hogy a for ... in ciklus univerzálisan használható
+         az objektumok és a tömbök esetén is!
+         <br>
+         <span class="x">
+         (Érdemes egy kicsit elgondolkodni azon, hogy amint leírunk egy 
+         számjegyet, abban a pillanatban string-et látunk. Az adott <em> számjegy </em>
+         tehát egy string. A <em>szám</em> az általa reprezentált számérték.)
+        </span>
+    </p>
+
+    <h2 class="h2_border">A for ... of ciklus</h2>
+    <p>
+         Ez a for ... in ciklussal ellentétben nem a <em> kulcsokon</em> lépked,
+         hanem az <em>értékeken</em> lépked végig. <br>
+         Pl. egy string-en is képes végigmenni. :-) <br>
+         
+    </p>
+
+
+    <p class="doubt">
+        Ezt a for...in és for...of közötti különbséget át kell nézni.
+        Ugyanis a tananyag szerint az objektum nem iterálható. <br>
+        Az iterálhatóság azt jelenti, hogy van egy meghatározott illetve
+        meghatározható sorrend,
+        ami alapján az elemeken végig lehet menni. <br>
+        A leírások szerint a for...of az iterálható sorozatok esetében használatos. <br>
+        Tömb esetében egyszerű a dolog, mert ott minden egyes elemnek van
+        egy indexe, ami gyakorlatilag az elem sorszáma. <br>
+        Az objektum esetében azonban nincs ilyen. <br>
+        Amit nem értek: mi szükség van rá? Hiszen a for...in szépen végiglépked
+        a kulcsokon, amikhez egyértelműen hozzá van rendelve 1-1 érték. <br>
+        És ha már a for...in végig tud lépkedni, akkor mi alapján teszi? És
+        miért nem tudja ugyanezen az alapon a for...of? <br>
+        És miért nevezi "igen okos"-nak a for...of ciklust? Hiszen csak
+        akkor működik objektummal, ha az objektum entries-re vagy keys, vagy
+        values-re indítom el a ciklust.
+    </p>
 
 </body>
 </html>

@@ -9,16 +9,24 @@
 </head>
 <body>
     
-    <table style="position: fixed; background-color: aliceblue;">
-        <thead>
-            <tr>
-                <td><a class="nav_menu" href="index.html">Főoldal</a></td>
-                <td><a class="nav_menu"href="HTML_ELEMEI.html">HTML</a></td>
-                <td><a class="nav_menu"href="CSS_Tutor.html">CSS</a></td>
-                <td><a class="nav_menu"href="about.html">about</a></td>
-            </tr>
-        </thead>
-    </table>
+    <div class="menuLine">
+       
+        <li class="nav_menu inLineMenu"><a href="index.html">&nbsp;&nbsp;Főoldal&nbsp;&nbsp;</a></li>
+        <li class="nav_menu inLineMenu"><a href="HTML_ELEMEI.html">&nbsp;&nbsp;HTML&nbsp;&nbsp;</a></li>
+        <li class="nav_menu inLineMenu"><a href="CSS_Tutor.html">&nbsp;&nbsp;CSS&nbsp;&nbsp;</a></li>
+        <li class="nav_menu inLineMenu"><a href="about.html">&nbsp;&nbsp;about&nbsp;&nbsp;</a></li>
+       
+        <li class="nav_menu inLineMenu dropdown">
+            <a href="javascript:void(0)" class="dropbtn">&nbsp;&nbsp;Dropdown&nbsp;&nbsp;</a>
+            <div class="dropdown-content">
+              <a href="#">Link 1</a>
+              <a href="#">Link 2</a>
+              <a href="#">Link 3</a>
+          
+            </div>
+        <li id="clock" class="nav_menu inLineMenu">time_date</li>
+       <!-- <li id="length" class="nav_menu inLineMenu">hossz</li>-->
+    </div>
 
     <h1> Űrlapok </h1>
 
@@ -41,6 +49,12 @@
     <p> De kezdetnek nézzük meg, miként tudunk beviteli mezőt, mezőket készíteni!</p>
     
     <br>
+
+
+    <h2 class="h2_border">A <em>&lt;form&gt;...&lt;/form&gt;</em> elem</h2>
+    <p> 
+        Ezzel fogunk közre egy űrlapot.
+     </p>
 
 
     <h2 class="h2_border">Szöveg bevitelére szolgáló mezők</h2>
@@ -170,8 +184,8 @@
             <label for="radio_item_3">tétel_3</label> <!-- Ez a címkéje a beviteli mezőnek.-->
             <input id="radio_item_3" name="item" type="radio">
         </div>
-A radio esetében a többszörös kiválasztás akkor nem lehetséges, ha minden tételnek a neve 
-(name) azonos. Ebből tudja a böngésző, hogy az azonos nevű tételek köréből szabad csak
+<strong>A radio esetében a többszörös kiválasztás akkor nem lehetséges, ha minden tételnek a neve 
+(name) azonos. </strong>Ebből tudja a böngésző, hogy az azonos nevű tételek köréből szabad csak
 1-et választani.
     </form>
 
@@ -189,8 +203,8 @@ A radio esetében a többszörös kiválasztás akkor nem lehetséges, ha minden
 </p>
 
 <p>
-    Az űrlap-szegmensek bekeretezése a &lt;fieldset&gt;-tel történik.
-    A keretre kerülő szöveg pedig a &lt;legend&gt;-del adható meg.
+    Az űrlap-szegmensek bekeretezése a <strong>&lt;fieldset&gt;</strong>-tel történik.
+    A keretre kerülő szöveg pedig a <strong>&lt;legend&gt;</strong>-del adható meg.
 </p>
 
 <p>
@@ -224,5 +238,33 @@ A radio esetében a többszörös kiválasztás akkor nem lehetséges, ha minden
 </p>
 
 
+
+
+<script>
+    function updateClock() {
+        time_date = new Date();
+        document.getElementById("clock").innerHTML =
+         String(time_date.getFullYear()) + "."
+         + String(time_date.getMonth()+1) + "." 
+         + String(time_date.getDate()) + "." + "  " 
+         + String(time_date.getHours()) + ":" 
+         + (String(time_date.getMinutes()).length == 1 ? String("0"+time_date.getMinutes()) : String(time_date.getMinutes())) + ":"
+         + (String(time_date.getSeconds()).length == 1 ? String("0"+time_date.getSeconds()) : String(time_date.getSeconds()));
+         
+         
+         
+         
+     /*   document.getElementById("length").innerHTML =
+        String(time_date.getSeconds()).length;*/
+
+        setTimeout(updateClock,1000); 
+     } 
+     updateClock();
+
+     
+
+
+
+</script>
 </body>
 </html>

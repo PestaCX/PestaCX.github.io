@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form-example</title>
+    <link rel="stylesheet" href="\CSS\styling.css">
+    <link rel="stylesheet" href="/lib/bootstrap-4.4.1-dist/css/bootstrap.css">
+</head>
+
+<body>
+
+    <!--    Ez itt a bootstrap saját navigációs menüje (navbar)   -->
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">Főoldal</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="HTML_ELEMEI.html">HTML <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="CSS_Tutor.html">CSS</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="JS.html">JS-általában</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="JS_objects.html">JS-objektumok</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="DOM.html">DOM</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        JavaScript
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="JS.html">A JS általában</a>
+                        <a class="dropdown-item" href="JS_objects.html">JS objektumok</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <!--
+    <div class="menuLine">
+       
+        <li class="nav_menu inLineMenu"><a href="index.html">&nbsp;&nbsp;Főoldal&nbsp;&nbsp;</a></li>
+        <li class="nav_menu inLineMenu"><a href="HTML_ELEMEI.html">&nbsp;&nbsp;HTML&nbsp;&nbsp;</a></li>
+        <li class="nav_menu inLineMenu"><a href="CSS_Tutor.html">&nbsp;&nbsp;CSS&nbsp;&nbsp;</a></li>
+        <li class="nav_menu inLineMenu"><a href="about.html">&nbsp;&nbsp;about&nbsp;&nbsp;</a></li>
+       
+        <li class="nav_menu inLineMenu dropdown">
+            <a href="javascript:void(0)" class="dropbtn">&nbsp;&nbsp;Dropdown&nbsp;&nbsp;</a>
+            <div class="dropdown-content">
+              <a href="#">Link 1</a>
+              <a href="#">Link 2</a>
+              <a href="#">Link 3</a>
+          
+            </div>
+        <li id="clock" class="nav_menu inLineMenu">time_date</li>  -->
+    <!-- <li id="length" class="nav_menu inLineMenu">hossz</li>-->
+    <!-- </div> -->
+
+    <h1>Egy képzeletbeli rendelés</h1>
+
+    <!-----------Ez itt az űrlapokra vonatkozó lényegi rész:-------------->
+    <span class="x">Ha azt szeretnénk, hogy az egyes mezők egymás alatt legyenek,
+        akkor külön div-be kell őket tenni. <br> <br>
+    </span>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <form>
+
+<!--  A form-group egy label-input páros, meg még ami esetleg van hozzá   -->
+                    <div class="form-group">
+                        <label for="Vevő_neve">Vevő_neve</label>
+                        <input type="text"  id="Vevő_neve" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Termeknev">Terméknév</label>
+                        <select id="Termeknev" name="Terméknév" class="form-control">
+                            <option value="hamburger">Hamburger</option>
+                            <option value="pizza">Pizza</option>
+                            <option value="kifli">Kifli</option>
+                            <option value="zsemle">Zsemle</option>
+                            <option value="hotdog">Hot-dog</option>
+                            <option value="kenyér">Kenyér</option>
+           
+                        </select>
+                    </div>
+
+                    <div class=" form-group">
+                        <label for="Egységár">Egységár</label>
+                        <input type="number"  id="Egységár" class="form-control">
+                    </div>
+<!------ A form-control class teszi egymás alá-fölé a label/input párokat!------->
+                    <div class="form-group">
+                        <label for="Mennyiség">Mennyiség</label>
+                        <input type="number" , id="Mennyiség">
+                    </div>
+
+                    <div class="form-group  form-check">
+                        <label for="Sürgős">Sürgős?</label>
+                        <input type="checkbox" , id="Sürgős">
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+
+                </form>
+            </div>
+            <div class="col-4"></div>
+        </div>
+    </div>
+
+
+    <!--................................................................-->
+
+   
+
+<script src="/JS/main.js"></script>
+<script>src="/JS/clock.js"</script>
+
+</body>
+
+</html>

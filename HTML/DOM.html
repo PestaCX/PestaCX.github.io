@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <link rel="stylesheet" href="\CSS\styling.css">
+</head>
+
+<body>
+    
+    <div class="menuLine">
+       
+        <li class="nav_menu inLineMenu"><a href="index.html">&nbsp;&nbsp;Főoldal&nbsp;&nbsp;</a></li>
+        <li class="nav_menu inLineMenu"><a href="HTML_ELEMEI.html">&nbsp;&nbsp;HTML&nbsp;&nbsp;</a></li>
+        <li class="nav_menu inLineMenu"><a href="CSS_Tutor.html">&nbsp;&nbsp;CSS&nbsp;&nbsp;</a></li>
+        <li class="nav_menu inLineMenu"><a href="about.html">&nbsp;&nbsp;about&nbsp;&nbsp;</a></li>
+       
+        <li class="nav_menu inLineMenu dropdown">
+            <a href="javascript:void(0)" class="dropbtn">&nbsp;&nbsp;Dropdown&nbsp;&nbsp;</a>
+            <div class="dropdown-content">
+              <a href="#">Link 1</a>
+              <a href="#">Link 2</a>
+              <a href="#">Link 3</a>
+          
+            </div>
+        <li id="clock" class="nav_menu inLineMenu">time_date</li>
+       <!-- <li id="length" class="nav_menu inLineMenu">hossz</li>-->
+    </div>
+
+
+    <h1> A Document Object Model (DOM)</h1>
+
+
+    <h2 class="h2_border"> Mi az a DOM?</h2>
+
+    <p>
+        A Document Object Model (magyarítva: dokumentum objektum modell)
+        egy olyan rendszere a weboldalnak, amely segítségével a weboldalon
+        található elemeket (beviteli mezők, címsorok, szövegek,stb.) be tudjuk
+        azonosítani, és a JavaScript segítségével célzottan ezen elemeket
+         dinamikus tartalommal, formátummal, viselkedéssel tudjuk ellátni. <br>
+         Úgy is fogalmazhatunk, hogy a weboldalt (dokumentumot)
+          objektumokra bontjuk, melyeket egyedileg be tudunk azonosítani (ID alapján),
+          és ezen objektumokból áll össze a weboldal.
+          (Természetesen ettől függetlenül bármelyik weboldalnak lehetnek statikus, 
+          vagyis nem változó elemei.)
+    </p>
+
+    <h3> Mi az, hogy dinamikus tartalom?</h3>
+    <p>
+        Olyan tartalom, ami nem állandó, hanem új értéket, formátumot, stb.
+         tud felvenni. Azt, hogy mi legyen az (új) érték vagy formátum,  
+         azt a JS-ben megírt programunkkal tudjuk beállítani. <br>
+         <span class="note"> (Ez egyúttal azt is jelenti, hogy a JS-nek el kell érnie a weboldal
+         elemeit. Erre vannak megfelelő parancsok a JS nyelvben.)</span> <br>
+         Nézd meg például az órát a jobb felső sarokban! Annak is 
+         minden másodpercben meg kell, hogy változzon a tartalma, 
+         különben az óra mindig ugyanazt az időt mutatná, vagy legalábbis 
+         mindig az utolsó oldalfrissítési időpontot.
+    </p>
+
+
+    <h2 class="h2_border">A HTML-elemek elérése JS-ből</h2>
+
+    <p>
+        Mint azt fentebb írtam, a JS-nek kell, hogy legyenek olyan parancsai,
+        amelyekkel el tudja érni a weboldal elemeit. <br>
+        Ennek az elérésnek többféle azonosítója is lehetséges, valamint az elérés
+        többszintű. <br>
+        Pl. a weboldal egésze, az objektum-hierarchia gyökere a <em> document </em>elem. <span class="x">Ennek egyik
+            következménye, hogy szinte az összes elérési eljárás document-tel kezdődik.
+        </span>
+    </p>
+    <p>
+        Az elérési eljárások tehát úgy kezdődnek, hogy
+        <span class="code_snip"> document.getElementByVALAMI</span>.
+        A VALAMI akkor teljesen egyedi, hogy ha az elem ID-je alapján történik, mivel
+        minden elemnek más ID-je kell, hogy legyen egyazon oldalon. <br> <br>
+        Tehát: <br>
+        <span class="code_snip">
+        document.getElementById("ID") </span> (ID helyére a megcélzott elem ID-je írandó.)<br> <br>
+
+        Az ID-vel szemben <em> name </em>attribútuma már több elemnek is lehet közös. <br>
+        Ez lehetővé teszi a következő eljárást: <br>
+        <span class="code_snip"> document.getElementsByName("NAME")</span> (Figyeljünk a többes számra!) <br>
+        Mivel ez már több elemet is adhat vissza, ezért az eredményhalmaz egy NodeList-ként
+        emlegetett tömbben lesz elérhető. <br> <br>
+<span class="code_snip">
+        document.getElementsByClassName(CLASSNAME) </span><br> <br>
+<span class="code_snip">
+        document.getElementsByTagName(TAGNAME) </span>(pl. a &lt;h1&gt; elem-<br> <br>
+<span class="code_snip">
+        document.querySelector("CSS-selector")</span> (A CSS-szelektor lehet osztály is)
+        (Ez csak az elsőt adja vissza akkor is, ha több elem is van az oldalon!) <br>
+<br>
+        Ha mégis minden ilyen elemet szeretnék megkapni (egy tömbben), akkor: <br>
+
+<span class="code_snip"> 
+        document.querySelectorAll("CSS-selector") </span><br>
+<br>
+        A tananyagban azt mondják, hogy újabban a querySelectorokat használják 
+        gyakrabban, merthogy sokkal rugalmasabbak. <br>
+
+        Ebben az esetben azonban ügyelni kell arra, hogy a CSS-szelektorok 
+        szintaktikáját kell használni! (Osztály: "." , Id:"#" a szelektor neve előtt.)
+        <br>
+
+    </p>
+
+
+    <h2 class="h2_border">Az <em> element</em> elem - mindenek őse?</h2>
+
+    <p>
+       <b> A CSS-szelektorral történő kiválasztás (eredménye?) maga is elmenthető 
+        egy változóba, így egy "element" típusú objektumot kapunk.</b> <br>
+        Ha erre a változóra (objektumra) a webböngésző konzoljából hívunk
+        egy "változónév." utasítást, akkor feljön egy szép lista arra vonatkozóan,
+        hogy mit lehet kezdeni ezzel az objektummal (változóval). Ez a lista 
+        tartalmazza az objektum property-jeit és method-jait. 
+        (Előbbi a tulajdonságokat, utóbbi a "képességeket", lehetséges műveleteket 
+        sorolja fel.) <br>
+    </p>
+
+    <h3> Az element objektum "bővítése"</h3>
+    <p>
+        Az objektumoknak van egy protoípusa. <br>
+        Ezt a prototípust lehet "igazítani". Ez azt jelenti, hogy ha 
+        olyan property-t vagy method-ot szeretnénk neki adni, ami még
+        nem létezik, akkor megtehetjük: <br>
+    <span class="code_snip">
+     Element.prototype.<b>setUrgent</b> = function() {this.style.border="solid 2px red"};</span> <br>
+
+        Ezt a tulajdonságot a későbbiekben úgy tudjuk bármelyik 
+        Element-objektumnál használni, hogy: <br>
+    <span class="code_snip">
+        document.querySelector("input#topinput").<b>setUrgent()</b>; </span><br>
+
+
+
+
+    </p>
+
+    <h2 class="h2_border">HTML elem attribútumainak lekérdezése</h2>
+    <p>
+        Ennek kb. az lehet a haszna, hogy felmérjük általa, hogy
+        egyáltalán milyen attribútumai vannak, amire hivatkozni lehet.
+        <br>
+        Nem, nem ezt tudja! Meghatározott attribútum <em> értékét</em>
+        kérdezi le, az attribútumot meg kell neveznem: <br>
+        topInput (ez a mező neve) <br>
+<span class="code_snip">
+        topInput.getAttribute("name");</span>         vagy <br>
+<span class="code_snip">
+        topInput.getAttribute("type");</span> <br> <br>
+<span class="code_snip">
+        topInput.attributes </span> paranccsal az összes attribútum 
+        neve és értéke lekérdezhető az adott elemre vonatkozóan. <br> <br>
+<span class="code_snip">
+        topInput.setAttribute("type", "email"); </span>
+
+    </p>
+
+
+    <h2 class="h2_border">Több elem módosítása a NodeList-tel</h2>
+
+    <p>
+        Ennek a műveletnek az a lényege, hogy egy weboldalon van több
+        olyan elem, amelyiket módosítani szeretnénk. <br>
+        Szükséges, hogy ezen elemeknek legyen valami közös szelektoruk,
+        ami által egyszerűen kijelölhetők. <br>
+
+    </p>
+    <p>
+        Készítünk egy objektumot, ami a szelektor eredményhalmazát tárolja.
+        Majd ennek az objektumnak az elemeit végigjárva végezzük el
+        egyenként (de nagyon gyorsan) a módosítást.
+    </p>
+    <p>
+       <b> Fontos, hogy a NodeList egy tömb-szerű listát ad vissza,
+        de nem csak tömb-szerű (indexelt) adatok vannak benne, hanem index
+        nélküli, a for...in számára bejárható elemek is.</b> <br>
+        Márpedig ha egy ilyen elemnek nincs általunk módosítani szándékozott
+        tulajdonsága, akkor a módosítás hibára fog futni. Ezért nem mindig
+        célszerű a for...in ciklus használata!
+    </p>
+
+<h2 class="h2_border">Szülő-gyerek kapcsolatok</h2>
+<p>
+    Vannak olyan HTML-elemek, amelyeken belül további elemek szerepelnek.
+    Pl. a &lt;html&gt; &lt;/html&gt; tag-ek között szerepel egy teljes weboldal
+    definíciója, vagyis ezek között minden további tag <em>gyereke</em> a html-elemnek. <br>
+    Természetesen az alacsonyabb szintű beágyazódásokat is szülő-gyerek
+    kapcsolatként tekinthetjük, pl. lehet egy &lt;div&gt;-ben újabb (és több)
+        &lt;div&gt;, stb. <br>
+   <b> A self-closed elemeknek nem lehet gyerek-elemük. Az ilyen elemekre
+    az jellemző, hogy nincs zárótag-jük. </b> Ilyen pl. az input elem.
+</p>
+
+<p>
+    A gyerekek számlálásának pl. akkor van jelentősége, amikor egy 
+    táblázatban az egy sorban levő elemeket kell megszámolni, megvizsgálni.
+</p>
+
+<p>
+   <b> childNodes</b> vs. <b>children </b><br>
+    A kettő nem ugyanaz! <br>
+    Ha olyan szöveg van a HTML-ben, ami "csak úgy" bele van írva,
+    és nincs elembe helyezve, a böngésző annak is létrehoz egy node-ot. <br>
+    Ebből következik, hogy a childNodes-ok száma sosem kisebb, mint a children-eké. <br>
+
+</p>
+
+<h2 class="h2_border">Gyerekmenedzsment</h2>
+
+<p>
+    Ez alatt azt értjük, hogy a weboldal HTML-definíciójához a JS 
+    segítségével hozzá tudunk adni, vagy épp el tudunk távolítani 
+    elemeket. <br>
+    Mi értelme ennek? <br>
+    Pl. lehetővé tesszük 
+    a felhasználónak, hogy maga is kezelhesse a weboldal elemeit. <br>
+    Az elemek kiválasztásában a querySelector -t használjuk.
+</p>
+
+<div class="code_snippet">
+
+    let <b>elementToAdd</b> = document.<b>createElement("elemtípus")</b>; <span class="comment">/ elemtípus pl. a p, vagy small, vagy...</span> <br> <br>
+    <b>elementToAdd.className</b> = "azon osztályok felsorolása, amihez tartoznia kell"; <br> <br>
+    <b>elementToAdd.innerHTML</b> = "az elem tartalma, pl. egy szöveg, instrukció"; <br>
+    <span class="comment"> Ezzel megvan a létrehozás, de még nincs a helyére téve!</span> <br> <br>
+    <span class="comment"> Tehát hozzá kell adni valahova:</span> <br>
+    let <b>parent</b> = document.querySelector("leendő szülő"); <br>
+    <b>parent.appendChild(elementToAdd);</b>
+    <span class="comment">Ezzel a parenthoz hozzáadja az elementToAdd-ot.</span> <br>
+    <span class="comment">Ennek ellentéte a removeChild.</span>  
+
+</div>
+
+<ol> 
+   <li> létrehoztunk egy változót, amelyikbe belekerül (a változó által 
+    egyelőre csak a memóriában) egy új elem, amit a createElement() metódussal
+    hozunk létre.</li>
+    <li> beállítjuk, hogy mely osztályokba tartozzon az új elem</li>
+    <li> beállítjuk, hogy mi legyen az adott elem tartalma</li>
+    <li> beállítjuk a fogadó, azaz szülő elemet, szintén egy változóban</li>
+    <li> majd a megfelelő (appendChild) utasítással hozzáfűzzük a gyereket</li>
+
+
+
+</ol>
+
+<p>
+    Hogy is zajlik ez az egész? <br>
+    A <span class="code_snip">.className</span> vagy az <span class="code_snip">.innerHTML</span>
+    vagy az <span class="code_snip">.appendChild</span> vagy a <span class="code_snip">.removeChild</span>
+    mind csak változókon működnek, hiszen azok után adjuk meg ponttal elválasztva a kért metódust. <br>
+    Ezért szükséges változóba tenni a kiválasztott elemeket, majd ezt 
+    változó formájában átadni a metódusnak.
+</p>
+
+
+<h2 class="h2_border">Események hozzárendelése HTML-elemekhez</h2>
+<p>
+    Tagname + event megadásával, a html-kódban: <span class="code_snip"> &lt;element onclick = "myScript"&gt; </span><br> <br>
+    JavaScriptből: <span class="code_snip">object.onclick = function()myScript;</span> <br> <br>
+    addEventListenerrel: <span class="code_snip">object.addEventListener("click", myScript);</span> <br> <br>
+
+    Az első kettő egyetlen eseményre (onclick) egyetlen akciót tud megadni. <br>
+    Ráadásul az ezek által megadott események/akciók egymást felülírják, vagyis mindig csak az utolsó hajtódik végre. <br>
+    Az utolsó (addEventListener) viszont <em> hozzáadja</em>, tehát nem felülírja a többi eseményt, ezáltal akár több akció is történhet egyazon eseményre. <br>
+</p>
+
+<p>
+    A kiválasztás itt is úgy zajlik, hogy egy változóba tesszük a kiválasztott objektumot/elemet,
+    és annak az eseményére vizsgálunk rá:
+</p>
+
+<div class="code_snippet">
+
+    let <b>sendButton = document.querySelector</b>("form .btn.btn-primary"); <br>
+    <b> &nbsp;&nbsp;&nbsp;&nbsp;sendButton.onclick = function</b> { <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;alert("Szia Pistike!"); <br>
+    } <br>
+    <span class="comment">FIGYELEM! A függvényt az eseménykezelő hívja meg,
+         nekünk nem kell!
+         <br> Nekünk csak meg kell adni, hogy melyik függvényt hívja! </span> <br>
+<br>
+    <b>sendButton.addEventListener("click", function()</b> { <br>
+        &nbsp;&nbsp;&nbsp;&nbsp; alert("Szia Pistike, ez már addEvenListener!"); <br>
+    }); <br>
+
+<br>
+<span class="comment">Egy window-esemény:</span>    <br>
+
+   <b> window.addEventListener("resize", function()</b> { <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;console.log(this.innerHeight, this.innerWidth); <br>
+    }); <br>
+
+    <br>
+    <span class="note">Ne zavarjon meg bennünket, hogy a két utóbbi példában
+        a függvény definiálása is helyben történt!
+    </span>
+
+
+</div>
+
+<p>
+    Fontos, hogy az EventListener esetében nincs on- szócska az esemény neve előtt!
+</p>
+<br>
+
+<h3>Window események</h3>
+
+<p>
+    Ezek olyan események, amelyeket nem a felhasználó kezdeményez, hanem 
+    a böngészőben történő események, pl.: <em> onload, onscroll, onresize</em> .
+</p>
+
+Az eseménykezelő esetében a <em>this</em> mindig arra értendő, amire az eseménykezelőt meghívtuk.
+Tehát, ha pl. sendButton-ra hívjuk az eventlistenert, akkor arra, ha window-ra hívtuk, akkor arra fog vonatkozni.
+
+
+<h2 class="h2_border">Egér-események és az űrlap</h2>
+
+<p>
+    A tananyag szerint egy űrlap beküldésekor (submit) lefrissül az űrlap, ami 
+    nem mindig szerencsés. Ennek megelőzésére van egy érdekes beállítás:
+</p>
+
+<div class="code_snippet">
+let orderForm = document.querySelector("#orderForm"); <span class="comment"> / Kiválasztjuk a kívánt űrlapot.</span> <br>
+&nbsp;&nbsp;&nbsp;&nbsp;orderForm.addEventListener("submit", function(ev) { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;ev.preventDefault(); <span class="comment">/Submit-ra letiltjuk az alapértelmezett akciót, </span> <br>
+
+let inputs = this.querySelectorAll("input"); <span class="comment">/Kiválasztjuk az input-mezőket.</span>  <br>
+let values = {}; <span class="comment">/Létrehozunk egy üres objektumot.</span> <br>
+for ( let i = 0; i &lt; inputs.length; i++ ) { <span class="comment">Bejárjuk az input-mezőket, és...</span> <br>
+    values[inputs[i].name] = inputs[i].value; <span class="comment">... és az újonnan létrehozott, még üres objektumunknak
+        átadjuk az input-mezők értékeit. Az [inputs[i].name] itt azt jelenti, hogy ez lesz a 
+        bejárási kulcsmező az input mezőknél.
+    </span> <br>
+} <br>
+console.log( values ); <span class="comment">Ezzel pedig kiíratjuk a konzolra.</span> <br>
+
+}); 
+
+
+</div>
+
+Fontos, hogy az input típusnál a button és a submit nem azonosak! űrlap 
+beküldésekor a submit-ot használjuk!
+
+
+<h2 class="h2_border">A <em>switch ... case</em> szerkezet</h2>
+
+<p>
+    Leginkább többfeltételes szerkezetek kiértékelésére használják.
+</p>
+
+Működése:
+
+<div class="code_snippet">
+
+    switch ( vizsgálandó változó ) { <br>
+       &nbsp;&nbsp;&nbsp;&nbsp; case x: {végrehajtandó kód..1}; break; <br>
+       &nbsp;&nbsp;&nbsp;&nbsp; case y: {végrehajtandó kód..2}; break; <br>
+       &nbsp;&nbsp;&nbsp;&nbsp; case z: {végrehajtandó kód..3}; break; <br>
+       &nbsp;&nbsp;&nbsp;&nbsp; default: {végrehajtandó kód..4}; <br>
+
+    }
+</div>
+
+<p>
+    A break-ekre azért van szükség, mert ha nem lennének ott, akkor az első 
+    teljesülő case után az összes többi is végrehajtódna. <br>
+    <b>Fontos, hogy a <em>case</em> strict összehasonlítást végez (===), vagyis 
+    az értékeken túl az adattípusoknak is egyezniük kell!</b>
+</p>
+
+
+<h2 class="h2_border">A <em>while {...}</em> és a <em>do {...} while</em> ciklus</h2>
+
+<p>
+    Alapvető különbség a kettő között, hogy míg a <em>while {...}</em> elöltesztelő,
+     addig a <em>do{...}while</em> hátultesztelő. <br>
+     Emiatt a <em>do{...}while</em> ciklus tartalma (magja) egyszer biztosan lefut,
+     szemben a <em>while {...}</em> ciklussal, ami már az elején kiléphet a ciklusból,
+     ha a ciklusfeltétel nem érvényesül.
+</p>
+
+<p>
+    Fontos továbbá, hogy ezek a ciklusok nem tartalmaznak "beépített" iterációt 
+    (azaz ciklusváltozó-léptetést), emiatt azt a ciklusmagban kell kezelni.
+</p>
+
+<div class="code_snippet">
+    let i = 0; <br>
+    while (i < 10) { <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;console.log( i ); <span class="comment">/ Kiírjuk a konzolra az i változó értékét</span> <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;i ++; <span class="comment">/ És biztosítjuk a változó frissítését!</span> <br>
+    } <br>
+
+    <span class="comment">Mivel ez a ciklus elöl tesztel, lehet, hogy már az elején
+        kilép a ciklusból!
+    </span>
+</div>
+<br>
+<div class="code_snippet">
+    let i = 0; <br>
+    do { <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;console.log( i ); <span class="comment">/ Kiírjuk a konzolra az i változó értékét</span> <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;i ++; <span class="comment">/ És biztosítjuk a változó frissítését!</span> <br>
+    } <br>
+    while (i < 10);
+    <span class="comment">Mivel ez a ciklus a végén tesztel, ezért a ciklusmag egyszer
+        mindenképpen lefut!
+    </span>
+</div>
+
+
+
+<h2 class="h2_border">A szülő (parent) elem</h2>
+
+<p>
+    Fontos, hogy bármely elemnek csak egyetlen szülője lehet, míg egy szülő elemnek
+    lehet több gyerek-eleme. <br>
+    <span class="note">Ez végülis abból adódik, hogy egy elembe akárhány 
+        további elemet bele lehet tenni, de egy elemet nem lehet több másikba tenni - 
+    legalábbis, ha a többszintű beágyazódástól eltekintünk.</span>
+
+</p>
+<!--................................................................-->
+
+<script src="/JS/clock.js"></script>
+</body>
+</html>
+
+
