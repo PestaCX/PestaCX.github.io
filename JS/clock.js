@@ -1,6 +1,6 @@
 
     function updateClock() {
-        time_date = new Date();
+        let time_date = new Date();
         document.getElementById("clock").innerHTML =
          String(time_date.getFullYear()) + "."
          + String(time_date.getMonth()+1) + "." 
