@@ -76,7 +76,7 @@
         Ha egy tömb egy másik tömb egyik eleme, akkor (további szinteket nem feltételezve)
         kétdimenziós tömbről beszélünk: <br>
     <p>
-        tömb1 = [a, b, c, d, tömb2, f, g] <br>
+        tömb1 = [a, b, c, d, tömb2, f, g]; <br>
         <span class="comment">Itt az a, b, c, ... nevek változókat jelentenek.
             Ha betűként szeretnénk őket eltárolni, akkor idézőjelbe kellene tenni őket
             egyesével!
@@ -93,7 +93,8 @@
 
     Bár a <em>typeof</em> operátor egy tömbre azt fogja mondani, hogy "object", vagyis
     objektum típusú, mégis megkülönböztetjük a tömböket az objektumoktól: a tömbök
-    sorszámmal (indexszel) azonosítják az elemeiket, míg az objektumok nevekkel.
+    sorszámmal (indexszel) azonosítják az elemeiket, míg az objektumok nevekkel. <br>
+    Ebben az értelemben tehát a tömbök speciális objektumok.
     </p>
 
 
@@ -103,7 +104,7 @@
         Van néhány olyan property (=tulajdonság), ami a tömbökre jellemző értékeket
         képes meghatározni. <br>
         Furcsán hangozhat, de vannak esetek, amikor egy adattömbről el kell tudni
-        dönteni, hogy az tömb-e, vagy objektum. (A probléma ugyanis az, hogy a typeof)
+        dönteni, hogy az tömb-e, vagy objektum. (A probléma ugyanis az, hogy a <em>typeof(címke)</em>
         operátor a tömb esetében is azt adja vissza, hogy object.):
         <br>
         <span class="code_snip"><strong>Array.isArray(</strong>tömbnév<strong>)</strong>;</span> megmondja, hogy tömb-e,
@@ -132,7 +133,7 @@
 
     <br>
 
-    A fent létrehozott és további egy elemmel kibővített tömb elemeit a sort metódussal
+    A fent létrehozott és további egy elemmel kibővített tömb elemeit a <strong>sort</strong> metódussal
     abc-sorrendbe, (vagy épp visszafelé a reverse-szel) tudjuk szervezni:
     <div class="code_snippet">
         fruits<strong>.sort();</strong> <br>
@@ -142,7 +143,7 @@
             Erre van egy trükkös megoldás, de a sort működésének ismeretének hiányában nem lehet értelmezni.</span>
 
     </div>
-
+<br><br>
     <p>
         A fruits tömb jelenleg stringek tömbje. 4 gyümölcs neve van benne felsorolva. <br>
         Ha az a szándékunk, hogy ezeket egyetlen stringbe fűzzük össze, akkor azt
