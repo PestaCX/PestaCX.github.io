@@ -31,7 +31,7 @@ h1 {
     background-image: -moz-linear-gradient(#95adbd, rgb(244,249,248));
     text-align: center;
     position: fixed;
-    width: 90%;
+    width: 100%;
     top: 0;
     /*float:left;*/
 }
