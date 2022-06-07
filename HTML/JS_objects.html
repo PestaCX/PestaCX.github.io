@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS - Objects</title>
-    <link rel="stylesheet" href="\CSS\styling.css">
+    <link rel="stylesheet" href="/PestaCX.github.io/CSS/styling.css">
 </head>
 
 <body>
@@ -47,6 +47,13 @@
     <p>
          Egy objektumnak van neve, és vannak benne key-value adat-párok
         aszerint, hogy az obejktumnak hányféle tulajdonságát tároljuk.
+    </p>
+
+    <p>
+        <strong>
+        FONTOS: a JavaScript-ben a primitív adattípusokon kívül
+        (number, string, boolean, undefined, null, symbol, bigint) minden más objektum!
+    </strong>
     </p>
 
     <p class="tananyag"> 
@@ -102,10 +109,16 @@ Az objektum tulajdonságait úgy tudod elérni, hogy az objektum neve után
 </p>
 
     <h2 class="h2_border"> Objektum megadásának módja</h2>
+
+    <p>
+        Általános gyakorlat, hogy az objektumot a const kulcsszóval hozzuk létre.
+        Ez azért jó így, mert az objektum létrehozásakor maga a teljes objektum-struktúra
+        lesz konstans, az egyes al-értékek lehetnek simán változók.
+    </p>
     <p>Megadásuk egyik módja a következő:</p>
 
     <div class="code_snippet">
-        objectName = { <br>
+        const objectName = { <br>
             &nbsp;&nbsp;&nbsp;&nbsp; key1 : value1, <br>
             &nbsp;&nbsp;&nbsp;&nbsp; key2 : value2, <br>
             &nbsp;&nbsp;&nbsp;&nbsp; key3 : value3, <br>
@@ -148,16 +161,42 @@ Az objektum tulajdonságait úgy tudod elérni, hogy az objektum neve után
     </p>
     
     <div class="code_snippet">
-        autó.gyártmány  <span class="comment"> vagy </span>autó[gyártmány]<span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;/= Daewoo</span> <br>
-        autó.modell <span class="comment"> vagy </span> autó[modell]<span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;/= Matiz</span> <br>
-        autó.évjárat <span class="comment"> vagy </span> autó[évjárat]<span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;/= 2000</span> <br>
-        autó.szín <span class="comment"> vagy </span> autó[szín] <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;/= arany</span> <br>
-        autó.km <span class="comment"> vagy</span> autó[km] <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;/= 59100</span> <br>
+        autó.gyártmány  <span class="comment"> vagy </span>autó["gyártmány"]<span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;/= Daewoo</span> <br>
+        autó.modell <span class="comment"> vagy </span> autó["modell"]<span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;/= Matiz</span> <br>
+        autó.évjárat <span class="comment"> vagy </span> autó["évjárat"]<span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;/= 2000</span> <br>
+        autó.szín <span class="comment"> vagy </span> autó["szín"] <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;/= arany</span> <br>
+        autó.km <span class="comment"> vagy</span> autó["km"] <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;/= 59100</span> <br>
     
         
     </div>
 
     <br>
+    <strong> Mivel a key minden esetben string típusú, ezért a szögletes zárójeles megadás esetén 
+    használnunk kell az idézőjelet, amennyiben literal-ként (közvetlen értékként) adjuk meg a 
+    kulcsot.</strong>
+    <br>
+    Lehet azonban ez a kulcs egy kifejezés eredménye is, ekkor idézőjel nélkül írjuk be a kifejezést. Ekkor azonban teljesülnie
+    kell annak, hogy a kifejezés string-ként értelmezhető eredményt adjon,
+    és a kapott string legyen elérhető az objektum egy kulcsaként. (Tehát ne hivatkozzunk
+    olyan key-re, ami nem is létezik az objektumunkban.)
+    <br>
+
+    <p> A fenti objektumhoz nagyon egyszerű további key:value párokat hozzáadni:</p>
+    <div class="code_snippet">
+        autó.tulajdonos = "Vikica";
+    </div>
+
+    <p> Ugyanilyen egyszerű egy key:value párost törölni az objektumból:</p>
+    <div class="code_snippet">
+        delete autó.tulajdonos;
+    </div>
+
+    <p>A delete az objetktumokból csak a tulajdonságokat (properties) törli, 
+        a változókat és a függvényeket nem. <br>
+       <strong> A delete kulcsszót ne használjuk a JS beépített objektumain, mert 
+        várhatóan a rendszer összeomlását vonja maga után.</strong>
+    </p>
+
 
     <p>
         De arra is van lehetőségünk, hogy "üres" objektumot hozzunk létre.
@@ -168,10 +207,16 @@ Az objektum tulajdonságait úgy tudod elérni, hogy az objektum neve után
     <div class="code_snippet">
 
         <p> let user = new Object(); <span class="comment">/Szigorúan nagy "O"-val írandó az object!</span> </p>
-
-        <snap class="comment">/ Ennek van egy még egyszerűbb módja:</snap>  
-
+        <span class="comment">/ Ennek van egy még egyszerűbb módja:</span>  
         <p>let user = {};</p>
+        <span class="comment">A két fenti megadási mód ugyanazt csinálja!</span>
+        <span class="comment"> Ezt követően a létrehozott, de még üres objektumhoz elkezdhetünk adatokat hozzáadni:</span> <br>
+
+        user.name = "Pistike"; <br>
+        user.age = 47; <br>
+        user.hair = "short"; <br>
+        <span class="comment">Mivel ez utóbbiak különálló utasítások, ezért ezek végén pontosvesszőt teszünk!</span> <br>
+        <span class="comment">Figyeljük meg azt is, hogy utólagos adathozzáadáskor egyenlőségjelet használunk a kettőspont helyett!</span>
 
     </div>
 
@@ -207,12 +252,196 @@ Az objektum tulajdonságait úgy tudod elérni, hogy az objektum neve után
        bizonyos elemére hivatkozva hívok egy függvényt, akkor ott csak az
        adott érték másolata kerül át a függvénybe - de ezt majd kipróbáljuk!
      <br>
+
+    További érdekesség, hogy <strong> az objektum referencia szerint ad át értéket</strong>, vagyis
+    nem is értéket ad át, hanem önmagát adja át. Ennek következménye, hogy
+    amikor az objektum egy "változó értékébe*" kerül át, akkor az a változó onnantól
+    pontosan azonos magával az objektummal, vagyis, ha innentől kezdve a változót 
+    módosítjuk, akkor az objektum is módosul! <br>
+    * <span class="note">A változó nem az objektum "értékét" veszi át, hiszen 
+        az objektum általában több értéket tartalmaz, nem pedig csak egyet.
+        Ezért a változó -de nevezzük inkább címkének!- az objektumhoz linkelődik, gyakorlatilag olyan lesz, mint 
+        az objektum egy másik neve.
+    </span>
+    <br>
+    Érdekes kérdés lehet, hogy miért szokás objektumokat változókba átvinni, de 
+    valószínűleg az az oka, hogy ilyen módon áttekinthetőbb lesz a kód.
+    <br>
        Vagyis az objektum olyan, mint egy címke (azonosító) alatti változók
        gyűjteménye. <br>
        A további változóknak van neve (key), és van értéke (value).
        Valószínűleg ezt hívják asszociatív tömbnek - összerendelt tömbnek.
        (Utánaolvastam a stackoverflow-n, és tényleg! :-) )
     </p>
+
+    <h3>Objektum az objektumban</h3>
+    <p>
+        Igen, arra is van lehetőség, hogy egy adott objektumban további objektumot,
+        esetleg objektumokat helyezzünk el. Ez a "nesting", magyarosabban beágyazás.
+    </p>
+
+    <h2 class="h2_border">Az objektum tulajdonságai és metódusai <br>
+    Properies and Methods</h2>
+
+    <p>
+        Egy objektum (mint azt fennebb kifejtettük) key-value párokból áll.
+        Ez azt jelenti, hogy egy adott névhez valamilyen adatot rendeltünk.
+        Ezeket properties-nek hívjuk. Ez gyakorlatilag egy key:value lista, (ami nincs rendezve).<br>
+        Az objektum azonban többet is tud: nem csak adatokat tud tárolni, 
+        hanem (ugyanúgy, key kulcsszóval azonosítva) függvényeket is, 
+        amelyeket az adott objektumban használhatunk is. Még a rájuk való hivatkozás
+        is ugyanúgy történik, mint a properties-re, annyi kiegészítéssel, hogy ekkor kell
+        a zárójel a függvény (=object.propery) után, vagyis: <br>
+        <div class="code_snippet">
+            object.property(); <span class="comment">/ ahol a "property" vmi függvényt kifejező név</span>
+            obejct.property; <span class="comment">/ Ha () nélkül adjuk meg, akkor a függvény definícióját kapjuk vissza!</span>
+        </div>
+        Más szóval: a metódusok olyan függvények, amiket objektumban tárolunk.
+
+    <p>
+        Metódus hozzáadása egy objektumhoz
+    </p>    
+    Ugyanúgy történik, mintha adatot adnánk hozzá, azzal a különbséggel, hogy az adat
+    helyett a függvény definícióját adjuk meg, és a kapcsos zárójel elé <em>function()</em>
+    kell:
+
+    <div class="code_snippet">
+        existingObject.newMethod = function() { <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;functionDefinition; <br>
+        };
+    </div>
+
+    </p>
+    <p>
+        Egy objektum nem csak azokat a property-ket tárolja, amiket mi adunk meg,
+        hanem egyéb property-ket is, pl. azt, hogy az objektum írható-e vagy csak olvasható.
+         (Enumerable, writable, configurable.) Nevezzük ezeket "rendszer-property"-knek.
+         A mi szintünkön ezeken aligha kell dolgozni. <br>
+
+         NEM EGÉSZEN! <br>
+         Az objektum propery-jeire vonatkozik ez! (Persze lehet, hogy magára az
+         objektumra is van ilyen, de ezek szerint ezek a paraméterek minden egyes property-hez
+         tárolásra kerülnek!)
+    </p>
+    <p>
+        Maga az objektum alapból csak olvasható, ez megintcsak összhangban van azzal,
+         hogy a <em> const</em> kulcsszóval szokás létrehozni.
+    </p>
+    <p>
+        Sokat segítene a megértésben, ha az objektum helyett objektum-definícióról beszélnénk.
+        Ez ugyanis az a struktúra, ami az objektumban általában változatlan. <br>
+        És az elkülönítés végett beszélhetnénk az objektum elemeiről, amik lehetnek 
+        property-k (adatok), vagy methods (metódusok), utóbbiak gyakorlatilag függvények.
+    </p>
+
+    <h3>Beépített metódusok használata</h3>
+    <p>
+        Ugyanúgy használjuk őket, mint bármelyik saját metódusunkat, annyi a különbség,
+        hogy ezek definícióját nem kell újra megalkotnunk.
+
+        <div class="code_snippet">
+            let message_1 = "Szia Pistike!"; <br>
+            let message_2 = message_1<strong>.toUpperCase()</strong>; <br>
+            <span class="comment">Ezzel a message_1-ben tárolt stringemet átalakítottam csupa nagybetűsre.</span>
+        </div>
+        Tehát egyszerűen az objektumnév után ponttal elválasztva odaírtam a kívánt metódust.
+    </p>
+
+
+    <h2 class="h2_border">A <em>this</em> kulcsszó</h2>
+    <p>
+        A <em>this</em> mindig egy objektumra hivatkozik. De az, hogy melyik 
+        objektumra, az már kicsit változatosabb...:
+    </p>
+    <table>
+      <tbody>
+            <tr><td>In an object method, <code class="w3-codespan">this</code> refers to the <b>object</b>.</td></tr>
+            <tr><td>Alone, <code class="w3-codespan">this</code> refers to the <b>global object</b>.</td></tr>
+            <tr><td>In a function, <code class="w3-codespan">this</code> refers to the <b>global object</b>.</td></tr>
+            <tr><td>In a function, in strict mode, <code class="w3-codespan">this</code> is <code class="w3-codespan">undefined</code>.</td></tr>
+            <tr><td>In an event, <code class="w3-codespan">this</code> refers to the <b>element</b> that received the event.</td></tr>
+            <tr><td>Methods like <code class="w3-codespan">call()</code>, <code class="w3-codespan">apply()</code>,
+            and <code class="w3-codespan">bind()</code> can refer <code class="w3-codespan">this</code> to <b>any object</b>.</td></tr>
+      </tbody>
+    </table>    
+
+
+    <h2 class="h2_border">Az objektum kiíratása</h2>
+    <p> Ha megértetted az objektumok mibenlétét, akkor máris adódhat a kérdés, hogy
+        az objektum melyik részét akarjuk kiíratni? <br>
+        Ugyanis a "csupasz" objektumot nem lehet kiíratni, ha mégis megpróbáljuk, akkor
+        szó szerint <span class="code_snippet">[object Object]</span> lesz a képernyőn,
+        aminek nem sok hasznát vehetjük.
+    </p>
+    <p>
+        A kiíratás kérdése tehát akkor pontosabb, ha megadjuk, hogy egy adott objektum 
+        melyik property-jét szeretnénk kiíratni. <br>
+        Erre többféle lehetőségünk is van:
+    </p>
+
+    <h4>Objektum meghatározott property-jének kiíratása</h4>
+    <ul>
+        <li>Displaying the Object Properties by name</li>
+        <li>Displaying the Object Properties in a Loop</li>
+        <li>Displaying the Object using Object.values()</li>
+        <li>Displaying the Object using JSON.stringify()</li>
+        </ul>
+
+
+  
+
+    <h2 class="h2_border">Az <span class="code_snippet">Object.values()</span> függvény </h2>
+
+    <p>
+        Ez végülis semmi egyebet nem csinál, mint egy adott objektum property-jeit 
+        tömbbé alakítja, és így vesszővel elválasztott lista lesz belőle. <br>
+        Fontos, hogy ez <strong>csak a value-kat adja vissza, a key-eket nem!</strong>
+    </p>
+
+    <div class="code_snippet">
+        <span class="comment"></span>
+        const user = { <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;  surname: "István", <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;  familyName: "Sándor", <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;  born: 1974, <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;  gender: "male", <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;  local: "Nyékládháza", <br>
+        }; <br> 
+<br>
+       let userdata = Object.values(user); <br>
+       <span class="comment">Az eredmény pedig az alábbi tömb:</span> <br>
+       Array(5) [ "István", "Sándor", 1974, "male", "Nyékládháza" ]
+    </div>
+    <br>
+
+
+<h2 class="h2_border">A <span class="code_snippet">JSON.stringify()</span> függvény </h2>
+
+<div class="code_snippet">
+    <span class="comment"></span>
+    const user = { <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;  surname: "István", <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;  familyName: "Sándor", <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;  born: 1974, <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;  gender: "male", <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;  local: "Nyékládháza", <br>
+    }; <br> 
+<br>
+   let userdata = JSON.stringify(user); <br>
+   <span class="comment">Az eredmény pedig az alábbi string:</span> <br>
+   {"name":"John","age":30,"city":"New York"} <br>
+   <span class="comment">Figyeljük meg, hogy ez a fgv. a key-eket is listázza!</span>
+</div>
+<br>
+<p>
+ Érdemes tudni azonban, hogy a JSON.stringify() az objektumban levő függvényeket (=metódusokat)
+ NEM listázza ki. (Mondjuk erre valóban ritkán lehet szükség.)
+</p>
+
+
+
+
+
 
     <h2 class="h2_border">A for ... in ciklus <span class="code_snip">/ for (keyvariable in objectName)</span> </h2>
     <p>
@@ -225,10 +454,13 @@ Az objektum tulajdonságait úgy tudod elérni, hogy az objektum neve után
     <div class="code_snippet">
         <b>for</b> (let k <b>in</b> user) {   <span class="comment"> / ahol user egy objektum<object data="" type=""></object></span> <br>
             &nbsp;&nbsp;&nbsp;&nbsp;console.log("Key:", k, "Value:", user[k]); <br>
-        }
+        }; <br>
+        <span class="comment">FIGYELEM!
+            A user[k] helyett NEM használhatunk user.k -t, mivel k itt egy index-változó, 
+            nem pedig key!
+        </span>
 
     </div>
-
     <p>
         A fenti formula először kiolvassa a <b> kulcsokat,</b> majd azokra 
         hivatkozva kiolvassa a hozzájuk tartozó értékeket.  <br>
@@ -247,7 +479,7 @@ Az objektum tulajdonságait úgy tudod elérni, hogy az objektum neve után
         Ebből következik, hogy a for ... in ciklus univerzálisan használható
          az objektumok és a tömbök esetén is!
          <br>
-         <span class="x">
+         <span class="note">
          (Érdemes egy kicsit elgondolkodni azon, hogy amint leírunk egy 
          számjegyet, abban a pillanatban string-et látunk. Az adott <em> számjegy </em>
          tehát egy string. A <em>szám</em> az általa reprezentált számérték.)
@@ -281,6 +513,208 @@ Az objektum tulajdonságait úgy tudod elérni, hogy az objektum neve után
         akkor működik objektummal, ha az objektum entries-re vagy keys, vagy
         values-re indítom el a ciklust.
     </p>
+
+
+    <h2 class="h2_border">JavaScript Accessors (get, set)</h2>
+
+    <p>
+        Az <em>accessor</em>-ok (szép magyarosan...) olyan eljárások, amelyek az 
+        objektum elemeihez hozzáférnek. Vagyis tudják azokat olvasni (get) vagy írni (set).
+    </p>
+
+    <p>
+        Alább egy getter:
+    </p>
+    <div class="code_snippet">
+        const person = { <br>
+           &nbsp;&nbsp;&nbsp;&nbsp; firstName: "John", <br>
+           &nbsp;&nbsp;&nbsp;&nbsp; lastName: "Doe", <br>
+           &nbsp;&nbsp;&nbsp;&nbsp; language: "en", <br>
+           &nbsp;&nbsp;&nbsp;&nbsp; get lang() { <br>
+           &nbsp;&nbsp;&nbsp;&nbsp;   return this.language; <br>
+           &nbsp;&nbsp;&nbsp;&nbsp; } <br>
+          }; <br>
+          <span class="comment">Ennek határása az objektumban létrejön
+               egy újabb property (lang), ami az objektumon belül képes
+                átvenni egy másik property (language)
+            értékét. <br>
+             Így ezen a másik néven is ki tudom olvasni az adott propery értékét: </span>
+
+             person.lang értéke ugyanaz lesz, mintha person.language -et kérném le.
+    </div>
+<br>
+
+
+
+    <p>
+    Itt pedig egy setter:
+    </p>
+    <div class="code_snippet">
+        const person = { <br>
+           &nbsp;&nbsp;&nbsp;&nbsp; firstName: "John", <br>
+           &nbsp;&nbsp;&nbsp;&nbsp; lastName: "Doe", <br>
+           &nbsp;&nbsp;&nbsp;&nbsp; language: "en", <br>
+           &nbsp;&nbsp;&nbsp;&nbsp; set lang(value) { <br>
+           &nbsp;&nbsp;&nbsp;&nbsp;   this.language; <br>
+           &nbsp;&nbsp;&nbsp;&nbsp; } <br>
+          }; <br>
+          <span class="comment">Ezzel tkp. létrehoztunk egy <em>lang</em> nevű property-t,
+              amibe ha beleírom <em>value</em> értékét, akkor az beállítja <em>language</em> property
+            értékét. <br>
+            Ennek annyi értelme lehet, hogy egy objektumban egy property-t több néven is meg lehet célozni kívülről.
+        És ahogy elnézem, ugyanez lehet az értelme a getter-nek is.</span> </span>
+    </div>
+<br>
+<p>
+    Mi lehet ezeknek az értelme? <br>
+    Elsősorban az, hogy pl. kívülről, felhasználó által bevitt adatok esetében 
+    az adatokat a megfelelő property-be mentés előtt lehet "tisztítani"
+     (pl. ha egy adatot csupa nagybetűvel kell tárolni, de a felhasználó kicsivel adta meg).
+
+</p>
+
+<h2 class="h2_border">Az <span class="code_snip">Object.defineProperty()</span> </h2>
+
+<p> Ez a függvény egy adott objektumban tud létrehozni újabb property-ket. 
+    Értelmet akkor nyer, amikor ezt úgy teszi, hogy a már az objektumban levő property-k 
+    függvényében hozza létre (és látha el értékkel) az új property-t.
+</p>
+
+<p> Ideteszek egy kis agyalnivalót: miért, mikor használja a get-et, és mikor a set-et?</p>
+<div class="code_snippet">
+
+<span class="jscolor" style="color:black">
+<span class="jsnumbercolor" style="color:red">
+</span>
+<span class="commentcolor" style="color:green">// Define object<br></span>
+<span class="jskeywordcolor" style="color:mediumblue">const</span> 
+obj = {counter : 
+<span class="jsnumbercolor" style="color:red">0</span>};<br><br>
+<span class="jsnumbercolor" style="color:red">
+</span>
+<span class="commentcolor" style="color:green">// Define setters and getters<br></span>
+Object.<span class="jspropertycolor" style="color:black">defineProperty</span>(obj, <span class="jsstringcolor" style="color:brown">"reset"</span>, {<br><span class="jsnumbercolor" style="color:red">
+</span>&nbsp;&nbsp;get : <span class="jskeywordcolor" style="color:mediumblue">function</span> () {<span class="jskeywordcolor" style="color:mediumblue">this</span>.<span class="jspropertycolor" style="color:black">counter</span> = <span class="jsnumbercolor" style="color:red">0</span>;}<br>});<br>
+Object.<span class="jspropertycolor" style="color:black">defineProperty</span>(obj, <span class="jsstringcolor" style="color:brown">"increment"</span>, {<br><span class="jsnumbercolor" style="color:red">
+</span>&nbsp;&nbsp;get : <span class="jskeywordcolor" style="color:mediumblue">function</span> () {<span class="jskeywordcolor" style="color:mediumblue">this</span>.<span class="jspropertycolor" style="color:black">counter</span>++;}<br>});<br>
+Object.<span class="jspropertycolor" style="color:black">defineProperty</span>(obj, <span class="jsstringcolor" style="color:brown">"decrement"</span>, {<br><span class="jsnumbercolor" style="color:red">
+</span>&nbsp;&nbsp;get : <span class="jskeywordcolor" style="color:mediumblue">function</span> () {<span class="jskeywordcolor" style="color:mediumblue">this</span>.<span class="jspropertycolor" style="color:black">counter</span>--;}<br>});<br>
+Object.<span class="jspropertycolor" style="color:black">defineProperty</span>(obj, <span class="jsstringcolor" style="color:brown">"add"</span>, {<br><span class="jsnumbercolor" style="color:red">
+</span>&nbsp;&nbsp;set : <span class="jskeywordcolor" style="color:mediumblue">function</span> (value) {<span class="jskeywordcolor" style="color:mediumblue">this</span>.<span class="jspropertycolor" style="color:black">counter</span> += value;}<br>});<br>
+Object.<span class="jspropertycolor" style="color:black">defineProperty</span>(obj, <span class="jsstringcolor" style="color:brown">"subtract"</span>, {<br><span class="jsnumbercolor" style="color:red">
+</span>&nbsp;&nbsp;set : <span class="jskeywordcolor" style="color:mediumblue">function</span> (value) {<span class="jskeywordcolor" style="color:mediumblue">this</span>.<span class="jspropertycolor" style="color:black">counter</span> -= value;}<br>});<br><br><span class="jsnumbercolor" style="color:red">
+</span><span class="commentcolor" style="color:green">// Play with the counter:<br></span>
+obj.<span class="jspropertycolor" style="color:black">reset</span>;<br>
+obj.<span class="jspropertycolor" style="color:black">add</span> = <span class="jsnumbercolor" style="color:red">5</span>;<br>
+obj.<span class="jspropertycolor" style="color:black">subtract</span> = <span class="jsnumbercolor" style="color:red">1</span>;<br>
+obj.<span class="jspropertycolor" style="color:black">increment</span>;<br>
+obj.<span class="jspropertycolor" style="color:black">decrement</span>;<br><span class="jsnumbercolor" style="color:red">
+</span> </span>
+</div>
+
+<br>
+
+<h2 class="h2_border">Object Constructors</h2>
+<p>
+    Az objektum-konstruktorok tkp. objektum-sablonként szolgáló függvények. <br>
+    Megkülönböztetésük céljából nagy kezdőbetűvel szokás írni a nevüket. <br>
+
+</p>
+
+<div class="code_snippet">
+
+    function Person(a, b, c, d) { <br>
+        &nbsp;&nbsp;&nbsp;&nbsp; this.firstName = a; <br>
+        &nbsp;&nbsp;&nbsp;&nbsp; this.lastName = b; <br>
+        &nbsp;&nbsp;&nbsp;&nbsp; this.bornIn = c; <br>
+        &nbsp;&nbsp;&nbsp;&nbsp; this.eyeColor = d; <br>
+    } <br>
+
+    <span class="comment">A <em>this</em> jelen esetben annak az objektumnak a neve,
+    amit majd ezzel a konstruktorral létrehozunk.</span>
+</div>
+
+<p>
+    Ez ugye szemlátomást egy függvény. Mitől lesz objektum-konstruktor? <br>
+    Attól, hogy ezt a függvényt feltöltve a megfelelő paraméterekkel (a,b,c,d)
+    létre tudok hozni egy objektumot, aminek ugyanez az adatszerkezete: <br>
+</p>
+
+<div class="code_snippet">
+
+    const itsMe = new Person("István", "Sándor", 1974, "blue"); <br>
+    const mySon = new Person("Mátyás", "Sándor", 2009, "blue");
+<br>
+    <span class="comment"> Ezzel legalábbis a key-ek begépelése megspórolható.</span>
+
+</div>
+<p></p>
+
+<h2 class="h2_border">Objektum-prototípusok</h2>
+<p>
+    Az objektumok között a tulajdonságok öröklődnek. Mégpedig a prototípusról az egyedi
+    objektumokra.
+</p>
+<p>
+    Mi a jelentősége ennek? <br>
+    Egy-egy objektumhoz újabb property-t adni nem nehéz, egyszerűen meg kell adni 
+    egy értéket az új property-nek, és az automatikusan az objektum részévé fog válni:
+</p>
+
+<div class="code_snippet">
+    exisingObject.nonexistingProperty = "newValue";
+</div>
+
+<p>
+    (Ugyanez az eljárás a konstruktorok esetében nem így működik, mert azoknál 
+    a konstruktor-függvénybe kell beleírni a módosítást. Ez kézzel nem bonyolult
+     dolog, de programból már más az eljárás.)
+</p>
+<p>
+    A nehézségek akkor kezdődnek, amikor sok objektumom van, és azokból sokhoz
+    szeretnék újabb property-(ke)t hozzáadni.
+    Vagy amikor a konstruktor-függvényt szeretném módosítani úgy, hogy újabb 
+    property(k) legyen(ek) benne. <br>
+    Szerencsére az eljárás semmivel nem bonyolultabb, mint az egyes objektumok 
+    esetében, mindössze egy <em>.prototype</em> szócskát kell beszúrni a cél-konstruktorba:
+</p>
+
+<div class="code_snippet">
+    exisingConstructor<strong>.prototype</strong>.nonexistingProperty = "newValue";
+</div>
+<br>
+<p>
+    Mindig tartsuk tiszteletben a rendszer-prototípusokat, tehát azokat sose írjuk át!
+</p>
+
+
+<h2 class="h2_border">JavaScript sets</h2>
+
+<p>
+    A JavaScrip set-ek tkp. egy tömb, amiben bármilyen adat lehet, de mindegyik 
+    csak egyszer fordulhat elő.
+</p>
+
+<h2>Set Methods</h2>
+
+<table class="ws-table-all">
+<tbody><tr><th width="120px">Method</th><th>Description</th></tr>
+<tr><td>new Set()</td><td>Creates a new Set</td></tr>
+<tr><td>add()</td><td>Adds a new element to the Set</td></tr>
+<tr><td>delete()</td><td>Removes an element from a Set</td></tr>
+<tr><td>has()</td><td>Returns true if a value exists</td></tr>
+<tr><td>clear()</td><td>Removes all elements from a Set</td></tr>
+<tr><td>forEach()</td><td>Invokes a callback for each element</td></tr>
+<tr><td>values()</td><td>Returns an Iterator with all the values in a Set</td></tr>
+<tr><td>keys()</td><td>Same as values()</td></tr>
+<tr><td>entries()</td><td>Returns an Iterator with the [value,value] pairs from a Set</td></tr>
+</tbody></table>
+<table class="ws-table-all">
+<tbody><tr><th width="120px">Property</th><th>Description</th></tr>
+<tr><td>size</td><td>Returns the number elements in a Set</td></tr>
+</tbody></table>
+
+
 
 </body>
 </html>

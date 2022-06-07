@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_ARRAYS</title>
+    <link rel="stylesheet" href="/PestaCX.github.io/CSS/styling.css">
+</head>
+
+<body>
+
+    <div class="menuLine">
+
+        <li class="nav_menu inLineMenu"><a href="index.html">&nbsp;&nbsp;Főoldal&nbsp;&nbsp;</a></li>
+        <li class="nav_menu inLineMenu"><a href="HTML_ELEMEI.html">&nbsp;&nbsp;HTML&nbsp;&nbsp;</a></li>
+        <li class="nav_menu inLineMenu"><a href="CSS_Tutor.html">&nbsp;&nbsp;CSS&nbsp;&nbsp;</a></li>
+        <li class="nav_menu inLineMenu"><a href="about.html">&nbsp;&nbsp;about&nbsp;&nbsp;</a></li>
+
+        <li class="nav_menu inLineMenu dropdown">
+            <a href="javascript:void(0)" class="dropbtn">&nbsp;&nbsp;Dropdown&nbsp;&nbsp;</a>
+            <div class="dropdown-content">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+
+            </div>
+    </div>
+
+    <h1>Tömbök (Array) a JavaScript-ben</h1>
+
+    <h2 class="h2_border">Mik azok a tömbök?</h2>
+
+    <p>
+        Van olyan, hogy sok adatot szeretnénk kezelni egy programban.
+        Tegyük fel, hogy ez mind olyan adat, ami változhat.
+        Rögtön jön a kérdés, hogy miként lehetne ezekre az adatokra hivatkozni.
+        Adjunk mindnek külön változónevet? Hát ez elég körülményes lenne! :-)
+
+        Ilyen esetekben (is) jönnek képbe a tömbök.
+        Egy alapvető tömbnek egy neve van, és azon belül van egy indexelt számsor,
+        ami megmondja, hogy a tömb hányadik eleméről van szó.
+
+        Tömb megadása:
+    <div class="code_snippet">
+
+        const tömbNév = [adat0, adat1, adat2, .... adatn];
+        <span class="comment">const-tal szokás megadni.</span>
+
+        <span class="comment">A fenti tömb első eleme a 0. elem:</span><br>
+
+        tömbNév[0] <span class="comment"> nem más, mint </span>adat0 <br>
+        tömbNév[1] <span class="comment"> pedig</span> adat1, <span class="comment">és így tovább</span> <br>
+        <br>
+        <span class="comment">A tömbök elemeire tehát a tömb nevével és
+            a kérdéses tömbelem szögletes zárójelbe tett sorszámával hivatkozunk.
+            A sorszámozás 0-val kezdődik!
+        </span>
+
+
+    </div>
+
+    <br>
+    A tömbnek lehet eleme:
+    <ul>
+        <li>szám</li>
+        <li>string</li>
+        <li>másik tömb</li>
+        <li>függvény</li>
+        <li>objektum</li>
+    </ul>
+
+    <h3>Tömb a tömbben</h3>
+    <p>
+        Ha egy tömb egy másik tömb egyik eleme, akkor (további szinteket nem feltételezve)
+        kétdimenziós tömbről beszélünk: <br>
+    <p>
+        tömb1 = [a, b, c, d, tömb2, f, g] <br>
+        <span class="comment">Itt az a, b, c, ... nevek változókat jelentenek.
+            Ha betűként szeretnénk őket eltárolni, akkor idézőjelbe kellene tenni őket
+            egyesével!
+        </span>
+    </p>
+    Ilyen esetben tömb2-t a tömb1-re merőlegesen tudnánk ábrázolni, innen a
+    "kétdimenziós" elnevezés. <br>
+    A tömb2 i-edik elemére a következőképpen tudunk hivatkozni: <br>
+    <em>elem a tömb2-ből:</em> tömb1 [4] [tömb2 [i]] <br>
+    , vagyis először a külső tömb indexét adjuk meg, majd a belsőét. <br>
+    Elviekben akárhány-dimenziós tömböt is képezhetnénk, kérdés, hogy meddig értjük a tartalmát.
+
+    </p>
+
+    Bár a <em>typeof</em> operátor egy tömbre azt fogja mondani, hogy "object", vagyis
+    objektum típusú, mégis megkülönböztetjük a tömböket az objektumoktól: a tömbök
+    sorszámmal (indexszel) azonosítják az elemeiket, míg az objektumok nevekkel.
+    </p>
+
+
+    <h2 class="h2_border"> Tömb-műveletek</h2>
+
+    <p>
+        Van néhány olyan property (=tulajdonság), ami a tömbökre jellemző értékeket
+        képes meghatározni. <br>
+        Furcsán hangozhat, de vannak esetek, amikor egy adattömbről el kell tudni
+        dönteni, hogy az tömb-e, vagy objektum. (A probléma ugyanis az, hogy a typeof)
+        operátor a tömb esetében is azt adja vissza, hogy object.):
+        <br>
+        <span class="code_snip"><strong>Array.isArray(</strong>tömbnév<strong>)</strong>;</span> megmondja, hogy tömb-e,
+        vagy sem <br>
+        <span class="code_snip">tömbnév <strong>instance of Array;</strong></span> ugyanúgy true v. false értéket ad
+        vissza ugyanezen kérdés eldöntésére <br>
+        <span class="code_snip">tömb<strong>.length</strong></span> a tömb hosszát "méri" meg
+        (ennek a számolása nem 0-val, hanem 1-gyel kezdődik
+        ebből következően a tömb hossza a legnagyobb index+1 -gyel egyenlő!).
+        <br>
+
+
+        És vannak olyan metódusok, amelyek képesek manipulálni a tömböt: <br>
+    </p>
+
+    <div class="code_snippet">
+
+        const fruits = ["apple", "pear", "lemon"]; <br>
+        fruits.<strong>push</strong>("banana"); <span class="comment">/Hozzáadja a tömb végéhez a "banana"
+            elemet, egyúttal az új tömb hosszát adja vissza.</span>
+    </div>
+
+    <p class="note"> Vajon mi értelme a push()-nak? <br> Leginkább az, hogy nem kell
+        meghatároznunk a hozzáadni kívánt új elem indexét, hanem az automatikusan a
+        tömb végére fog kerülni.</p>
+
+    <br>
+
+    A fent létrehozott és további egy elemmel kibővített tömb elemeit a sort metódussal
+    abc-sorrendbe, (vagy épp visszafelé a reverse-szel) tudjuk szervezni:
+    <div class="code_snippet">
+        fruits<strong>.sort();</strong> <br>
+        fruits<strong>.reverse();</strong> <br>
+        <span class="comment">A sort csak stringek esetében működik jól!
+            Számokkal nem, mert az első számjeggyel kezdi az összehasonlítást... <br>
+            Erre van egy trükkös megoldás, de a sort működésének ismeretének hiányában nem lehet értelmezni.</span>
+
+    </div>
+
+    <p>
+        A fruits tömb jelenleg stringek tömbje. 4 gyümölcs neve van benne felsorolva. <br>
+        Ha az a szándékunk, hogy ezeket egyetlen stringbe fűzzük össze, akkor azt
+        a toString(); függvénnyel megtehetjük:
+    <div class="code_snippet">
+        newString = fruits.<strong>toString();</strong> <span class="comment">Ekkor készül egy vesszővel elválasztott
+            felsorolása az elemeknek.</span> <br>
+        <span class="comment"> Az új string már nem tömb, tehát nem lehet 0., 1., 2. elemeire bontani!</span>
+
+        <span class="comment">Ugyanez történik a join hatására is, de ezesetben azt is megadhatjuk (idézőjelben), hogy
+            vessző, vagy más jel legyen az elválasztó:</span> <br>
+        newString = fruits.<strong>join(" * ");</strong> <span class="comment">/Itt szóköz_csillag_szóköz lesz az
+            elválasztó.</span>
+    </div>
+
+    </p>
+
+    <p>
+        A pop metódus érdekesen működik. Nagyjából a push() ellentéte, de ha belegondolunk, mégiscsak máshogy működik.
+        <br>
+        A push()-nál ugye a zárójelben meg kell adni, hogy mit szeretnénk a tömb végébe biggyeszteni. <br>
+        A pop() viszont leveszi a tömb utolsó elemét, egyúttal felveszi a levett elem értékét:
+
+    <div class="code_snippet">
+        fruits<strong>.pop();</strong> <span class="comment">A fenti, banana-val kiegészített tömbünkből leveszi a
+            banana elemet.</span> <br>
+        Egyúttal fruits.pop(); értéke átveszi a levett elem értékét (esetünkben ez banana).
+    </div>
+    </p>
+    <br>
+    <p>
+        A shift metódusok ugyanarra valók, mint a push/pop, de nem a tömb végén,
+        hanem a tömb elején végeznek manővereket:
+
+    <div class="code_snippet">
+
+        fruits<strong>.shift();</strong> <span class="comment">"Kirántja" a tömb legalsó (legelső) elemét, az összes
+            többi lejjebb esik eggyel.</span> <br>
+        fruits<strong>.unshift();</strong> <span class="comment">"Alátesz" egy új elemet az összes többinek (a 0.
+            helyre), így a többiek indexe 1-gyel nő.</span>
+
+
+    </div>
+    </p>
+    <br>
+    <p>
+        Arra is van lehetőség, hogy egy tömböt egy másik adattal (akár másik tömbbel) összefűzzünk:
+    <div class="code_snippet">
+
+        fruits<strong>.concat(vegetables);</strong> <span class="comment">"A fruits tömb végére odailleszti a vegetables
+            tömböt.</span> <br>
+        <span class="comment">De megadhatunk akár több tömböt is, vagy akár egyetlen stringet:</span> <br>
+        fruits<strong>.concat(vegetables, pastas);</strong> <span class="comment">2 tömböt tesz mellé.</span>
+        fruits<strong>.concat("dinnye");</strong><span class="comment">Egyetlen tömbelemet tesz mellé.</span>
+    </div>
+    </p>
+
+
+    <p>
+        Tudunk egyetlen tömbelemet tetszőleges helyről kimetszeni (slice), vagy hozzátoldani (splice):
+    <div class="code_snippet">
+
+        fruits<strong>.splice(2,0,"orange","grape");</strong> <span class="comment">"A fruits tömb
+            2-es számú indexével kezdődően beszúrja a megadott 2 új elemet úgy, hogy
+            0 elemet töröl ugyanonnan. A függvény egyúttal visszaadja a kivágott elemeket.</span> <br>
+        <br> <span class="comment">A slice() ezzel szemben kimásolja(!) a tömb x-dik elemétől felfelé az
+            elemeket:</span> <br>
+        fruits<strong>.slice(2);</strong> <span class="comment">A 2. elemmel kezdve kimásolja az elemeket a
+            tömbből.</span>
+        <span class="comment">Az eredeti tömböt NEM MÓDOSÍTJA, hanem új tömbben adja vissza a kimásolt részt.</span> <br>
+        <span class="comment">Ha a slice-nak megadunk egy második argumentumot is, akkor az azt jelöli, hogy melyik a következő
+            elem, amit MÁR NEM másol ki.
+        </span>
+
+        <br><br><a href="https://www.w3schools.com/js/js_array_methods.asp">Nézd meg itt!</a>
+
+    </div>
+    </p>
+</body>
+
+</html>
