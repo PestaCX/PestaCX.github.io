@@ -28,7 +28,7 @@ h1 {
     color: blue;
     /*background-color: rgb(163, 186, 206);*/
     background-image: -moz-linear-gradient(#95adbd, rgb(244,249,248));
-    text-align: center;
+    text-align: left;
     position: fixed;
     width: 100%;
     top: 0;
