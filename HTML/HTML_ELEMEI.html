@@ -125,7 +125,7 @@
     elegendő hely. 
     De ha új sort kezdek a kódban, akkor sem fog új sorban megjelenni a weblapon.
     Ez azért van, mert az oldal szélességét maga a monitoron látható szélesség szabja meg.
-    Ekkor a inline elemek úgy jelennek meg, hogy amíg el nem érik az oldal (jobb) szélét, 
+    Ekkor az inline elemek úgy jelennek meg, hogy amíg el nem érik az oldal (jobb) szélét, 
     addig nem váltanak sort.
     Erről egyszerűen meggyőződhetünk azzal, hogy zoom-oljuk az oldalt, és láthatjuk, 
     amint ez az egybefüggő szöveg a rendelkezésre álló hely függvényében tördelődik újra.
@@ -148,6 +148,7 @@
     <p>List item - <strong>&lt;li&gt;</strong></p>
     A listaelemek a listák alkotóelemei. Az egyes listaelemeket az <strong>&lt;li&gt;</strong> tag-gel tudjuk megadni.
 
+    <br> <br>
     <p>Unordered list - <strong>&lt;ul&gt;</strong></p>
     Unordered list-ben a listaelemek között semmilyen sorrendiséget nem jelzünk:
     <ul>
@@ -160,7 +161,7 @@
         <li> másik elem</li>
         <li> ez is egy elem</li>
     </ul>
-
+<br>
     <p>Ordered list - <strong>&lt;ol&gt;</strong></p>
     Az ordered list nem azt jelenti, hogy a böngésző helyettünk sorba rendezne bármit is!
     Csak azt jelenti, hogy az egyes listaelemek sorszámot kapnak:
@@ -185,7 +186,7 @@
           <strong>&lt;/ul&gt;</strong>
         </p>
     </div>
-    A rendezett lista megadása ugyanígy történik, csak az &lt;ol&gt;&lt;/ol&gt; tag-párost kell használni. <br>
+    A rendezett lista megadása ugyanígy történik, csak az <strong> &lt;ol&gt;...&lt;/ol&gt; </strong>tag-párost kell használni. <br>
     <p>
     A listák blokk-szintű elemek, vagyis mindig új sort kezdenek, és utánuk a következő elem is új sorba kerül.
     </p>
@@ -221,13 +222,13 @@
     <p>
         A link jelezhető egy képpel is, 
         ebben az esetben a "szöveg" helyére nem szöveget írunk, hanem az adott, megjelenítendő kép linkjét:
-    </p>
-    
+        
     <div class="code_snippet">
     <strong>&lt;a href</strong>="http://www.cx-gl.hu"&gt;
     <span style="color:red";>&lt;img src="kép_linkje"&gt;</span><strong>&lt;/a&gt;</strong>
     </div>
-    
+</p>
+
     <p>
     <a href="http://www.cx-gl.hu">
         <img src="https://ogden_images.s3.amazonaws.com/www.motorcycleclassics.com/images/2009/03/11102152/CX650_2.jpg"
@@ -265,7 +266,7 @@
     <strong>&lt;caption&gt;&lt;/caption&gt;</strong> tag-ek között adjuk meg a táblázat címét. <br>
     <strong>&lt;thead&gt;&lt;/thead&gt;</strong> tag-ek jelölik a táblázat fejlécét (Table header). 
     thead használata esetén a táblázat többi részét tbody-ba kell tenni! A thead párja a tfoot, ami nem kötelező. tfoot-nál is kell a tr, td!<br>
-    <strong>&lt;th&gt;&lt;/th&gt;</strong> tag-ek jelölik a táblázat fejlécében található adatok.
+    <strong>&lt;th&gt;&lt;/th&gt;</strong> tag-ek jelölik a táblázat fejlécében található adatokat.
     Ezeket érdekes módon tr-be kell tenni!<br>
     <strong>&lt;tr&gt;&lt;/tr&gt;</strong> tag-ek jelölik a táblázat egyes sorait. <br>
     <strong>&lt;td&gt;&lt;/td&gt;</strong> tag-ek között adjuk meg egy-egy cella tartalmát.
