@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
+  <title>BootStrap-howto</title>
+  <!--  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
+  <!-- <link rel="stylesheet" href="C:\Users\admin\Downloads\TANFOLYAM\PestaCX.github.io\lib\bootstrap-4.4.1-dist\css\bootstrap.css"> -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="../CSS/styling.css">
+  <link rel="stylesheet" href="../lib/bootstrap-4.4.1-dist/css/bootstrap.css">
+</head>
+
+
+<body>
+
+  <!--        Ez itt alább a Bootstrap link-menürendszere:       -->
+
+
+  
+  <nav class="navbar navbar-expand-lg navbar-light bg-light menuLine" style="position:fixed; font-size: 60%;">
+
+
+    <a style="font-size: 100%; "class="navbar-brand" href="index.html">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item">
+          <a class="nav-link" href="HTML_ELEMEI.html">HTML<span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="CSS_Tutor.html">CSS-alapozó</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="DOM.html">DOM</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="űrlapok.html">Űrlapok</a>
+        </li>
+
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            BootStrap
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="bootstrap.html">BS Alapok</a>
+            <a class="dropdown-item" href="basic-bootstrap.html">BS</a>
+            <!--
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>-->
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            JavaScript
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/HTML/JS.html">JS_alapok</a>
+            <a class="dropdown-item" href="/HTML/JS_objects.html">JS_Objektumok</a>
+            <a class="dropdown-item" href="JS_arrays.html">JS_Tömbök</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+        <!--
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>
+    </ul>
+    --
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>-->
+
+  <li style="visibility: hidden" class="nav-item"> .............................</li>
+
+      <li>
+
+          <span style="margin-right:0;" id="clock" class="nav-link"></span>
+
+        </li>   
+    </div>
+
+  </nav>
+  
+
+
+
+  <h1 style="position:relative; top:60px" >A Bootstrap használata</h1>
+  <p class="note"> Úgy döntöttem, ha már saját táblázatot csinálok a BS-pel, akkor leírom ennek a folyamatát, ne kelljen a BS oldalán kotorni utána.</p>
+ 
+
+  <h2 class="h2_border"> Hogyan kezdjünk hozzá?</h2>
+
+  <p>
+  Két lehetőség is van: vagy letöltjük, vagy belinkeljük. <br>
+  A kettő között alapvető különbség, hogy a belinkelés esetén a BS a távolból, a BS weboldaláról végzi a dolgát, vagyis ahhoz, hogy jól működjön, mindenképpen szükséges, hogy a weboldalunkat megjelenítő eszköz (ami akárhol is lehet), rendelkezzen internet-eléréssel. Ez ugye evidens abban az esetben, ha a mi oldalunkat is eleve egy távoli helyről látogatják meg. <br>
+  <br> 
+  A weboldal, ahonnan le lehet tölteni:
+  <a href="https://getbootstrap.com/docs/5.2/getting-started/download/">Bootstrap letöltése innen</a>
+  <br>
+  Innen pedig (letöltés nélkül) belinkelhetjük a HTML-fájlunk head szekciójába:
+  <a href="
+  https://getbootstrap.com/docs/5.2/getting-started/download/#cdn-via-jsdelivr">BootStrap CDN-link itt</a>
+  
+  </p>
+
+
+  <h2 class="h2_border"> Hogyan használjuk?</h2>
+
+  <p>
+    Szerencsére a BootStrap weboldalán vannak példák, amelyeket ha bemásolunk a saját html-fájlunkba, akkor
+    máris láthatjuk a BS jótékony hatását.
+  </p>
+
+  <p>
+    A <a href="https://getbootstrap.com/docs/4.4/getting-started/introduction/">
+      https://getbootstrap.com/docs/4.4/getting-started/introduction/</a> oldalon található
+    linket bemásolva a html-kódunk head-szekciójába azonnal elérhetővé válnak az új a stílus-elemek.
+  </p>
+
+
+  <p>
+    Arra is van lehetőségünk, hogy a Bootstrap-elemeket letöltsük, kitegyük egy lib-mappába
+    a projektmappánkon belül, és oda állítjuk át a linket a CDN helyett.
+    (A CDN az a szolgáltatás, ami az efféle tartalmakat a weben keresztül elérhetővé teszi.) <br>
+    Így a saját szerverünktől tudjuk a Bootstrap-et szolgáltatni, nem függünk a CDN-től.
+  </p>
+
+  <p>
+    A Bootstrap-ben van egy előre elkészített váz, amit fel tudunk használni.
+    De ennek kismillió beállítása van, sokmindent kell jól beparaméterezni,
+    így csak azt tudom javasolni, hogy a dokumentációt tanulmányozni kell.
+  </p>
+
+  <p>
+    A BS (BootStrap, nem keverendő össze a BullShit-tel!) a mobil eszközökre koncentrál elsősorban,
+    így a nagyobb kijelzős felületekre a kisebb mobilkijelzőkről skáláz fel.
+    (Na ez jó homályos lett így...!)
+  </p>
+
+  <p>
+    A BS a tartalom megformázását parametrikusan végzi,
+    és ebben a megjelenítő eszköz képmérete az elsőszámú paraméter.
+    Ez alapján 5-féle szintű kijelzőméret-osztályt kezel:
+
+  <ul>
+    <li><strong>.col</strong> - ez az alap, a legkisebb méret</li>
+    <li><strong>.col-sm</strong> - sm, mint small</li>
+    <li><strong>.col-md</strong> - medium</li>
+    <li><strong>.col-lg</strong> - large</li>
+    <li><strong>.col-xl</strong> - extralarge</li>
+
+  </ul>
+  </p>
+
+  <p>
+    A fenti kijelzőméret-osztályok megnevezéséből is látszik, hogy ezek az osztályok tényleges osztályok,
+    vagyis a formázni kívánt HTML-elemek <em>class</em> paraméterként kapják meg ezeket az osztályneveket. <br>
+    Ennek következtében ezekkel (a BootStrap által hozott) osztálynevekkel "megbélyegezve" egy-egy elemet
+    vagy elemcsoportot pikk-pakk elérhetjük, hogy annak a formázását a BS végezze (és végzi meglehetősen
+    intelligens, adaptív módon).
+  </p>
+
+  <p>
+    A BootStrap-osztályokról itt lehet egy listát találni: <br>
+    <a
+      href="https://www.w3schools.com/bootstrap4/bootstrap_ref_all_classes.asp">https://www.w3schools.com/bootstrap4/bootstrap_ref_all_classes.asp</a>
+    <br>
+    <span class="note">A lista végén átléphetünk a BS3 CSS-osztályait tartalmazó listára is.</span>
+  </p>
+
+  <p>
+    A BS vízszintes irányban 12 blokkra osztja fel a kijelzőt. (Függőlegesen nincs határ.)
+    A <strong>.col</strong> vagy <strong>.col-sm/md/lg/xl</strong> után további kötőjellel
+    megadott számérték azt jelenti, hogy ebből a 12-blokknyi szélességből az adott
+    táblázat-elem hány oszlopnyit használjon fel.
+    Vagyis, ha pl. .col-4 értéket adunk meg, az végeredményben a 12-széles képszélességet
+    12 / 4 = 3 részre osztja fel. De van lehetőség arra is, hogy a 12-szélességet egyenlőtlen
+    arányban osszuk fel, pl.: col-4, col-6, col-2.
+  </p>
+
+  <p>
+    A mobil eszközök esetében a BS úgy tűnik, hogy nem nagyon támogatja a többoszlopos
+    megjelenítést. Vagyis azoknál a függőleges, egyoszlopos elem-elrendezés dominál.
+  </p>
+
+  <p>
+    A legkisebb megjelenítőeszköz méretéből célszerű kiindulni,
+    ugyanis a BS így tudja elvégezni a felskálázást. Ez egyúttal azt is jelenti, hogy
+    nekünk elegendő a legkisebb eszközre megcsinálni a tervet, a nagyobbakra a BS
+    automatikusan felskálázza a lapot. (Ha jól értelmezem...)
+  </p>
+
+  <p>
+    A BS media-query segítségével képes meghatározni, hogy mekkora kijelzőn fut éppen.
+  </p>
+
+  <p>
+    A <strong> .container</strong> osztály behozza a <strong> .container-fluid</strong> -ot is
+    a sm/md/lg/xl mellé. <br>
+    Dokumentáció:
+    <a href="https://getbootstrap.com/docs/4.4/examples/grid/#containers">
+      https://getbootstrap.com/docs/4.4/examples/grid/#containers</a>
+  </p>
+
+  <p>
+    A BS-ben a rácsos/táblázatos tartalom egy háromszintű hierarchiát követ:
+  <ul>
+    <li> <strong>container</strong> class</li>
+    <li><strong>row</strong> class</li>
+    <li><strong>col</strong> class</li>
+  </ul>
+  </p>
+
+
+  <p>
+    Ha maradunk a táblázatos felépítésnél, akkor a <strong>&lt;tr&gt;</strong> -eken belül vannak
+    a <strong>&lt;td&gt;</strong> -k, vagyis az adatok.
+  </p>
+
+
+  <!-- Az alábbi a kommentben volt Bootstrap-videó-->
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-
+J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-
+Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"></script>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+
+  <script src="../JS/clock.js"></script>
+
+</body>
+
+</html>
